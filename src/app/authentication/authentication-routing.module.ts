@@ -3,14 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {AuthenticationComponent} from './authentication.component';
 
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'login',
-    pathMatch:'full'
-}
-,
+    component:AuthenticationComponent,
+     children: [
+      {
+        path:'',
+        redirectTo:'login',
+       pathMatch:'full'
+    },
 {
     path:'login',
 component:LoginComponent
@@ -23,6 +27,7 @@ component:LoginComponent
     path:'forgot-password',
     component:ForgotPasswordComponent
  }
+]}
 ];
 
 @NgModule({

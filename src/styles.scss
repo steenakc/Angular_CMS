@@ -1,4 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/app/constants/theme-constants.scss";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-grid-tiles-align-start{
+    .mat-figure {
+        justify-content: flex-start !important ;
+        align-items: flex-start !important;
+     }
+    }
+
+.secondary-color-background{
+    background-color: $theme-secondary-color;
+}
+.primary-color-background{
+        background-color: $theme-primary-color;
+}

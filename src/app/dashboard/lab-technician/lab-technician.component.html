@@ -5,11 +5,11 @@
     <mat-grid-tile class="secondary-color-background" colspan="1"  >
        
         <mat-list style="width: 100%; padding: 10px;">
-            <mat-list-item style="cursor: pointer;" ><mat-icon>dashboard</mat-icon>Dash Board</mat-list-item>
+            <mat-list-item style="cursor: pointer;" (click)="navigateToLabTechnicianHome()" ><mat-icon>dashboard</mat-icon>Dash Board</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item  (click)="addPatient()" style="cursor: pointer;"><mat-icon>account_box</mat-icon>Add New Patient</mat-list-item>
+            <mat-list-item  (click)="navigateToAddLabTest()" style="cursor: pointer;"><mat-icon>account_box</mat-icon>Add Lab Test</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item style="cursor: pointer;"><mat-icon>assignment</mat-icon>Book Appointment</mat-list-item>
+            <mat-list-item style="cursor: pointer;"><mat-icon>assignment</mat-icon>Patient List</mat-list-item>
             <mat-divider></mat-divider>
           </mat-list>
 
@@ -24,3 +24,4 @@
   </mat-grid-list> 
   
   
+
