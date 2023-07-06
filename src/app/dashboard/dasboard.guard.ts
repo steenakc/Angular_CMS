@@ -17,11 +17,13 @@ export class DashboardGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     
-     console.log("dashboard gurad")
+     console.log("dashboard gurad");
+
      if (this.sessionService.staff===null){
       alert('You are not authorized')
       return false;
      }
+     
      try {
         console.log(this.sessionService.staff);
            return true;
