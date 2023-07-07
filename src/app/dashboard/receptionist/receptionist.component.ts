@@ -16,5 +16,9 @@ export class RecptionistComponent implements OnInit {
     this.router.navigate(['/dashboard/receptionist/new-patient'])
 
   }
+  listPatients(){
+    this.router.navigate(['/dashboard/receptionist/list-patient'])
+
+  }
 
 }

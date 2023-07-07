@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReceptionistNewPatientComponent implements OnInit {
 
+  patientForm:any={
+    name:'',
+    age:'',
+    gender:null,
+    bloodgroup:null,
+  }
   constructor() { }
 
   ngOnInit(): void {
+    this.patientForm.name="steena";
   }
-
+  submitPatientForm(){
+    console.log(this.patientForm);
+  }
+  cancel(){
+    
+  }
 }
