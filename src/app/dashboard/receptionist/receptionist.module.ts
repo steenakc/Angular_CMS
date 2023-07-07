@@ -31,11 +31,7 @@ import { ReceptionistListPatientComponent } from './receptionist-list-patient/re
     ReceptionistRoutingModule,
 
     MatSelectModule,
-    MatSelectModule,
     MatButtonModule,
-    //FormControl,
-     //ReactiveFormsModule,
-
      MatCheckboxModule,
     MatGridListModule,
     MatDividerModule,

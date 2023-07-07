@@ -16,7 +16,6 @@ export class ReceptionistNewPatientComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.patientForm.name="steena";
   }
   submitPatientForm(){
     console.log(this.patientForm);
