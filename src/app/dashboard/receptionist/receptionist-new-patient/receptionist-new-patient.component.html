@@ -1,0 +1,143 @@
+<!-- <div>
+  <mat-card style="background-color: #f8cbbf; padding: 10px; ">
+    <mat-card>
+      <mat-card-content>Add A New Patient Here...</mat-card-content>
+    </mat-card>
+
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Name</mat-label>
+              <input matInput>
+            </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Age </mat-label>
+              <input matInput>
+            </mat-form-field></td>
+        </tr>
+      </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td><mat-form-field class="example-full-width">
+              <mat-label>Telephone</mat-label>
+              <span matPrefix>+1 &nbsp;</span>
+              <input type="tel" matInput placeholder="555-555-1234">
+
+            </mat-form-field>
+          </td>
+          <td>
+
+            <mat-form-field>
+              <mat-label>Choose an option</mat-label>
+              <mat-select>
+                <mat-option value="option1">Option 1</mat-option>
+                <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </td>
+
+        </tr>
+      </table>
+
+      <p>
+        <mat-form-field class="example-full-width">
+          <mat-label>Address</mat-label>
+          <textarea matInput placeholder="Ex. 100 Main St"></textarea>
+        </mat-form-field>
+
+      </p>
+      <h4>mat-select</h4>
+      
+
+
+    </form>
+
+
+
+
+  </mat-card>
+
+</div> -->
+
+<mat-card>
+  <form class="example-form">
+    <mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+
+      <mat-grid-tile colspan="2">
+        <div style="width: 100%;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;">
+          New Patient Form
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput name="name" [(ngModel)]="patientForm.name">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-form-field>
+          <mat-label>Age</mat-label>
+          <input matInput type="number" onwheel="return false;" name="age" [(ngModel)]="patientForm.age">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-form-field>
+          <mat-label>Select Gender</mat-label>
+          <mat-select name="gender" [(ngModel)]="patientForm.gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-form-field>
+          <mat-label>Select Blood Group</mat-label>
+          <mat-select name="gender" [(ngModel)]="patientForm.bloodgroup">
+            <mat-option value="Male">O+ve</mat-option>
+            <mat-option value="Female">O-ve</mat-option>
+            <mat-option value="Other">A+ve</mat-option>
+            <mat-option value="Female">A-ve</mat-option>
+            <mat-option value="Male">B+ve</mat-option>
+            <mat-option value="Other">B-ve</mat-option>
+            <mat-option value="Male">AB+ve</mat-option>
+            <mat-option value="Other">AB-ve</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-form-field class="example-full-width">
+          <mat-label>Telephone</mat-label>
+          <span matPrefix>+1 &nbsp;</span>
+          <input type="tel" matInput placeholder="555-555-1234">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-form-field class="example-full-width">
+          <mat-label>Address</mat-label>
+          <input matInput #message maxlength="256" placeholder="Ex. House name">
+          <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan ="2">
+        <div style="    width: 100%;;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;">
+          <button mat-raised-button color="warn" (click)="cancel()"> Cancel</button>
+          <button style="margin-left: 10px;" mat-raised-button color="primary" 
+          (click)="submitPatientForm()"> Submit</button>
+        </div>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </form>
+</mat-card>
