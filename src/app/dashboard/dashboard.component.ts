@@ -18,8 +18,12 @@ staffName:string='';
 userId:number=0;
   ngOnInit(): void {
     //this.staffName=this.sessionService.staff.userFullName;
-    this.staffName=this.sessionService.staff.userFullName;
-    this.userId=this.sessionService.staff.userId;
+    try {
+      this.staffName=this.sessionService.staff.userFullName;
+      this.userId=this.sessionService.staff.userId;
+    } catch (error) {
+    }
+   
   }
   loginOut(){
     this.router.navigate(['/authenticate'])
