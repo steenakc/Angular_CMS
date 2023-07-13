@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-paharmacist-stockmanagment',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaharmacistStockmanagmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  stockMangement(){
+    this.router.navigate(['dashboard/pharmacist/list-stock']);
+
+  }
+
+  prescriptionMangement(){
+    this.router.navigate(['dashboard/pharmacist/list-prescription']);
+
   }
 
 }

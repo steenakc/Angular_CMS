@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+import{ReceptionistService}from 'src/app/service/receptionist.service'
 
 @Component({
   selector: 'app-receptionist-new-patient',
@@ -7,18 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReceptionistNewPatientComponent implements OnInit {
 
-  patientForm:any={
-    name:'',
+  addPatientForm:any={
+    patientName:'',
     age:'',
+    adress:'',
     gender:null,
-    bloodgroup:null,
+    bloodGroup:null,
+    phNo:'',
   }
-  constructor() { }
+  constructor(private receptionistService:ReceptionistService,private router :Router) { }
 
   ngOnInit(): void {
   }
   submitPatientForm(){
-    console.log(this.patientForm);
+    console.log(this.addPatientForm);
+    this.receptionistService.insertPatient(this.addPatientForm).then((patientObj)=>
+    {
+      alert("Patient aded successfully........");
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+            "patientId": patientObj.patientId,
+            "index": Math.round(Math.random() * 10000),
+        },
+        skipLocationChange: true
+    };
+    this.router.navigate(['/dashboard/receptionist/list-patient'], navigationExtras);
+    })
   }
   cancel(){
     

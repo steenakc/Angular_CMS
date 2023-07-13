@@ -1,0 +1,62 @@
+<br> <br> <br>
+<mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+
+    <mat-card>
+        <mat-grid-tile colspan="2">
+            <div style="width: 100%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;">
+            Medicine Prescription
+            </div>
+          </mat-grid-tile>
+  
+      <form class="example-form">
+        <br><br>
+  
+        <div class="mat-elevation-z8 demo-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Medicine Name</th>
+                <th>Dosage</th>
+                <th>No Of Days</th>
+                <th>Count</th>
+              </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let item of medicineprescriptionlist">
+                <td>{{ item.medicne.medicineName }}</td>
+                <td>{{ item.dosage.dosageStatus }}</td>
+                <td>{{ item.noOfDays }}</td>
+                <td>
+                    <input type="number" [(ngModel)]="item.count"  name="item.count" min="0" >
+                    
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+
+       
+
+      </form>
+
+
+
+    </mat-card>
+    <br><br><br>
+  
+   
+    <div class="button-container" *ngFor="let item of medicineprescriptionlist">
+       
+        <div class="button-group"  >
+          <button mat-raised-button color="warn" (click)="cancel">Cancel</button>
+          <button mat-raised-button color="primary" (click)="billForm(item.appointmentId)" >Submit</button>
+        </div>
+      
+    </div>
+  
+  </mat-grid-list>
+  

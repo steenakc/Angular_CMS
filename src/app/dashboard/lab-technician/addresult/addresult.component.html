@@ -1,0 +1,32 @@
+<mat-card style="width: 1985%;">
+    <form class="example-form">
+      <mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+  
+        <mat-grid-tile colspan="2">
+          <div style="width: 100%; text-align: center; font-size: 24px; font-weight: bold;">
+            Add Result
+          </div>
+        </mat-grid-tile>
+  
+       
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>Actual Value</mat-label>
+            <input matInput type="number" [(ngModel)]="resultForm.actualValue" name="actualValue" onmousewheel="return false;">
+          </mat-form-field>
+        </mat-grid-tile>
+  
+        <mat-grid-tile colspan="2" rowspan="2">
+          <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
+            <button mat-raised-button  color="warn" (click)="navigateToDash()">Cancel</button>
+            <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="submitResultForm()">Submit</button>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+  
+  <br>
+  
+  <a href="/dashboard/lab-technician/lab-test-list">list-test</a>
+  

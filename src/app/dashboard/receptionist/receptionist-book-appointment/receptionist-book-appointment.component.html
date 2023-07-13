@@ -1,0 +1,134 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title> Book Appointment</mat-card-title>
+    <mat-card-subtitle>
+      <h3>Patient Details</h3>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-grid-list cols="4" rowHeight="10:1" style="padding: 10px;">
+      <mat-grid-tile>
+        <th>Name </th>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <th> :</th>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <tr>{{patientListForBooking.patientName}}</tr>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <th> </th>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <th>Reg.No </th>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <th> :</th>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <tr>{{patientListForBooking.patientRegNo}}</tr>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <th> </th>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <th>Age </th>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <th> :</th>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <tr>{{patientListForBooking.age}}</tr>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <th> </th>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <th>Gender </th>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <th> :</th>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <tr>{{patientListForBooking.gender}}</tr>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <th> </th>
+      </mat-grid-tile>
+
+
+    </mat-grid-list>
+
+
+  </mat-card-content>
+
+
+
+
+
+
+</mat-card>
+<!----------------###########################################------>
+<mat-card style="margin-top: 25px;">
+  <mat-card-header>
+    <mat-card-title>Appiontment Details</mat-card-title>
+    <mat-card-subtitle>End</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field class="example-full-width">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)" (click)="picker.open()">
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!------->
+
+    <!---->
+    <mat-form-field style="padding: 25px;">
+      <mat-label>Select Department</mat-label>
+      <mat-select name="Department" [(ngModel)]="departmentIdSelected" (selectionChange)="onDepartmentChange()">
+        <mat-option *ngFor="let dep of departments" [value]="dep.deptId">
+          {{ dep.deptName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!---->
+    <mat-form-field style="padding: 25px;">
+      <mat-label>Select Doctor</mat-label>
+      <mat-select name="Doctor" [(ngModel)]="doctorIdSelected" (selectionChange)="onDoctorChange()">
+        <mat-option *ngFor="let doc of doctorList" [value]="doc.doctor.doctorId">
+          {{ doc.doctor.doctorName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="doctor!=null&&doctor.doctor!=null&&doctor.doctor.doctorId>0">
+      <mat-form-field style="padding: 25px;">
+        <mat-label> Available slots</mat-label>
+        <mat-select name="Time" [(ngModel)]="timeSelected" (selectionChange)="onSlotChange()">
+          <mat-option [disabled]="slot.appointment_id>0" *ngFor="let slot of doctor.doctorSlotAppointments" [value]="slot.time">
+            {{slot.time}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+
+
+    <button mat-raised-button color="warn" (click)="cancel()"> Cancel</button>
+    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="submitAppointment()"> Submit</button>
+
+
+
+
+  </mat-card-actions>
+</mat-card>
