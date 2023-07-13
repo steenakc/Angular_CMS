@@ -7,9 +7,14 @@
         <span style="margin-left: 10px ;">THE ROYAL MELBOURE HOSPITAL</span>
         <span class="example-spacer"></span>
         <div  class="example-icon" aria-label="Example icon-button with share icon">
-            <img src="/assets/hos_final_logo.jpg" style="height: 38px;
+            <!-- <img src="/assets/hos_final_logo.jpg" style="height: 38px;
             margin-right: 5px;
-            border-radius: 50%;"  alt="image"/>
+            border-radius: 50%;"  alt="image"/> -->
+            <img style="height: 38px;
+            margin-right: 5px;
+            border-radius: 50%;"
+                    [src]="'http://localhost:9091/login/userimage?userId='+userId"
+                    alt="">
         </div>
         <div  class="example-icon" aria-label="Example icon-button with share icon">
             <span>{{staffName}}</span>
