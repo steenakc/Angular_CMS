@@ -3,13 +3,16 @@ import { Router } from '@angular/router';
 import { SessionService } from 'src/app/service/sessionService';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Authenticationservice } from 'src/app/service/authenticationservice';
+import { Helper } from 'src/app/helper/helper';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-
+export class LoginComponent implements OnInit{
+help=new Helper();
   constructor(private sessionService: SessionService, private router: Router, private authenticationservice: Authenticationservice) { }
 
   ngOnInit(): void {
@@ -63,8 +66,11 @@ export class LoginComponent implements OnInit {
 
         this.sessionService.staff = staff;
         this.sessionService.accessToken = accessToken;
+        this.help.setValueToSessionstorage(true,"userInfo",staff);
+
         /*
         */
+       
         switch (staff.roleId) {
           case 1:
             this.router.navigate(['dashboard/receptionist']);

@@ -13,10 +13,12 @@ import {MatButtonModule} from '@angular/material/button';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    WebsiteComponent,
+    WebsiteComponent
+   
     
     
    
@@ -27,7 +29,8 @@ import {MatButtonModule} from '@angular/material/button';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+  
     
 
 

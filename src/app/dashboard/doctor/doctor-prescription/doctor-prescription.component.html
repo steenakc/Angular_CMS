@@ -1,0 +1,188 @@
+<br><br>
+<div style="display: flex; justify-content: space-between;">
+  <div><!-- Add other content here --></div>
+  <button mat-raised-button color="primary" type="submit" (click)="NextPatient()">Next Patient</button>
+</div>
+<br><br>
+
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+  <!-- medicine -->
+  <mat-tab label="MEDICINE">
+    
+    <!-- ---------------------------------------------------------------------------------------------- -->
+    <div class="mat-elevation-z8 demo-table" style="max-height: 3000px; overflow-y: auto;">
+      <br><br>
+      <div class="demo-button-container">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button mat-raised-button (click)="getMedicinePrescription()" class="demo-button">Medicine History</button>
+        <br><br>
+        <div *ngIf="showMedicinePrescription">
+          <div class="mat-elevation-z8 demo-table" style="max-height: 300px; overflow-y: auto;">
+            <table>
+              <thead>
+                <tr style="text-align: center;">
+                  <th>Date</th>
+                  <th>Medicine</th>
+                  <th>dosage</th>
+                  <th>No of Days</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prescription of medicinePrescriptionList" style="text-align: center;">
+                  <td>{{ prescription.appointment.appointmentDateTime | date:'dd-MM-yyyy'}}</td>
+                  <td>{{ prescription.medicne.medicineName }}</td>
+                  <td>{{ prescription.dosage.dosageStatus }}</td>
+                  <td>{{ prescription.noOfDays }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <br>
+      <mat-grid-list class="mat-grid-tiles-align-start" cols="4" rowHeight="50px">
+
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>Medicine</mat-label>
+            <mat-select name="medicineId" [(ngModel)]="medicinePrescriptionForm.medicineId">
+              <mat-option *ngFor="let medicine of med" [value]="medicine.medicineId">{{ medicine.medicineName
+                }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>Dosage</mat-label>
+            <mat-select name="dosageId" [(ngModel)]="medicinePrescriptionForm.dosageId">
+              <mat-option *ngFor="let dosage of dos" [value]="dosage.dosageId">{{ dosage.dosageStatus
+                }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>No of Days</mat-label>
+            <input matInput type="number" name="rate" [(ngModel)]="medicinePrescriptionForm.noOfDays">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1">
+          <button mat-icon-button color="primary" class="add-button"
+            (click)="submitMedicine()"><mat-icon>add</mat-icon></button>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <div class="demo-button-container">
+        <div class="mat-elevation-z8 demo-table" style="max-height: 300px; overflow-y: auto;">
+          <table>
+
+            <tbody>
+              <tr *ngFor="let prescription of medicinePrescriptionAppointmentList" style="text-align: center;">
+
+                <td>{{ prescription.medicne.medicineName }}</td>
+                <td>{{ prescription.dosage.dosageStatus }}</td>
+                <td>{{ prescription.noOfDays }}</td>
+                <td> <button mat-menu-item
+                    (click)="deleteMedicinePrescription(prescription.medicnePrescriptionId)"><mat-icon>delete</mat-icon>delete</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <br><br>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ------------------------------------------------------------------------------------------------------------ -->
+  </mat-tab>
+
+
+  <!--  Lab-->
+
+  <mat-tab label="LABORATORY">
+    <!-- --------------------------------------------------------------------------------------------------------------- -->
+
+    <div class="mat-elevation-z8 demo-table" style="max-height: 3000px; overflow-y: auto;">
+      <br><br>
+      <div class="demo-button-container">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button mat-raised-button (click)="getTestPrescription()" class="demo-button">Test History</button>
+        <br><br>
+        <div *ngIf="showTestPrescription">
+          <div class="mat-elevation-z8 demo-table" style="max-height: 300px; overflow-y: auto;">
+            <table>
+              <thead>
+                <tr style="text-align: center;">
+                  <th>Date</th>
+                  <th>Test</th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prescription of testPrescriptionList" style="text-align: center;">
+                  <td>{{ prescription.appointment.appointmentDateTime | date:'dd-MM-yyyy'}}</td>
+                  <td>{{ prescription.labTest.testName }}</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+
+
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>Lab Test</mat-label>
+            <mat-select name="labTestId" [(ngModel)]="testPrescriptionForm.labTestId">
+              <mat-option *ngFor="let test of tes" [value]="test.labTestId">{{ test.testName
+                }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+
+
+
+        <mat-grid-tile colspan="1">
+          <button mat-icon-button color="primary" class="add-button"
+            (click)="submitTest()"><mat-icon>add</mat-icon></button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <!--  -->
+      <div class="demo-button-container">
+        <div class="mat-elevation-z8 demo-table" style="max-height: 300px; overflow-y: auto;">
+          <table>
+
+            <tbody>
+              <tr *ngFor="let prescription of testPrescriptionAppointmentList" style="text-align: center;">
+
+                <td>{{ prescription.labTest.testName }}</td>
+
+                <td> <button mat-menu-item
+                    (click)="deleteTestPrescription(prescription.testPrescriptionId)"><mat-icon>delete</mat-icon>delete</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- --------------------------------------------------------------------------------------------------------------- -->
+  </mat-tab>
+  <!-- <mat-tab label="REPORT"> Content 3 </mat-tab> -->
+</mat-tab-group>

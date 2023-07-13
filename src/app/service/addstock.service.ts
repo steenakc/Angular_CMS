@@ -23,7 +23,9 @@ export class AddstockService extends ApiService{
        return this.doPost(environment.apiUrl+"/api/stock",addstock);
      }
   
-
+     stockList(){
+      return this.http.get<any>(environment.apiUrl+"/api/stock");
+     }
   // //Add Stock
   // insertStock(medstock:Addstock)
   // {
