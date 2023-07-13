@@ -1,0 +1,101 @@
+<mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+
+    <mat-card>
+        
+        
+            <h1> <div style="width: 100%;
+            text-align:center;
+            font-size: 30px;
+            
+            font-weight: bold; font-family: 'Times New Roman', Times, serif;color: blueviolet;">
+            The Royal Melboure Hospital
+            </div></h1>      
+      <hr><br>
+
+    <mat-card style="background-color: whitesmoke;height: 50%;">
+        <table style="margin-left: 0%;">
+                <td>
+            <tr>
+                <th>Date</th>
+                <td>:</td>
+                <td>{{getCurrentDate()}}</td>
+              </tr>
+          
+          <tr>  
+                <th>Registeration No</th>
+                <td>:</td>
+                <td>{{medicineprescriptionlist1.appointment.patient.patientRegNo }}</td>
+             
+            </tr> 
+          
+              <tr>
+                <th>Patient Name</th>
+                <td>:</td>
+                <td>{{medicineprescriptionlist1.appointment.patient.patientName }}</td>
+                
+              </tr>
+          
+              <tr>
+                <th>Doctor</th>
+                <td>:</td>
+                <td>{{medicineprescriptionlist1.appointment.doctor.doctorName }}</td>
+               
+              </tr>
+            </td>
+          </table>
+          
+    </mat-card>
+    <br>
+
+        <div class="mat-elevation-z8 demo-table" style="background-color: whitesmoke;">
+  
+            <table >
+                <thead >
+                    <tr style="padding:20px;">
+                        <ng-container matColumnDef="position" > 
+                            <th>Test Name</th>
+                            
+                            <th>Rate</th>
+                            <th>Price</th>
+
+                    </ng-container>
+                    </tr>
+                </thead>
+        
+                <tbody  >
+                    
+                      <ng-container matColumnDef="position" *ngFor="let item of medicineprescriptionlist" >
+                        <tr  style="padding:20px;">
+                            <td >{{ item.medicne.medicineName }}</td>
+                        
+                            <td>{{item.count}}</td>
+                         <td>{{ item.medicne.rate }}</td>
+                         <td>{{ item.count * item.medicne.rate }}</td>                          
+                           
+                          
+                        </tr>       
+                        
+                      </ng-container>
+                   
+                    <tr>
+                        <td colspan="3"></td>
+                        <td>Total Price: {{ getTotalPrice() }}</td>
+                      </tr>
+                </tbody>
+            </table>
+          </div>
+    <br>
+
+    <div style="width: 100%;
+display: flex;
+justify-content:center;
+
+margin-top: 10px;">
+  <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+  <button style="margin-left: 10px;" mat-raised-button color="primary" onclick="window.print()" >Generate Bill</button>
+</div>
+    </mat-card><br>
+
+   
+</mat-grid-list>
+<!-- (click)="disableprescription(item.medicnePrescriptionId)" -->

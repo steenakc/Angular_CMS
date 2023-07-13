@@ -1,1 +1,58 @@
-<p>lab-test-add works!</p>
+<mat-card style="width: 1985%;">
+  <form class="example-form">
+    <mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+
+      <mat-grid-tile colspan="2">
+        <div style="width: 100%; text-align: center; font-size: 24px; font-weight: bold;">
+          Add Test
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field>
+          <mat-label>Test Name</mat-label>
+          <input matInput type="text" [(ngModel)]="testForm.testName" name="testName">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field>
+          <mat-label>High Range</mat-label>
+          <input matInput type="number" [(ngModel)]="testForm.highRange" name="highRange" onmousewheel="return false;">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field>
+          <mat-label>Low Range</mat-label>
+          <input matInput type="number" [(ngModel)]="testForm.lowRange" name="lowRange" onmousewheel="return false;">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field>
+          <mat-label>Unit</mat-label>
+          <input matInput type="text" [(ngModel)]="testForm.unit" name="unit">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="1">
+        <mat-form-field>
+          <mat-label>Test Price</mat-label>
+          <input matInput type="number" [(ngModel)]="testForm.testPrice" name="testPrice" onmousewheel="return false;">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile colspan="2" rowspan="2">
+        <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
+          <button mat-raised-button (click)="navigateToDash()" color="warn" (click)="cancel()">Cancel</button>
+          <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="submitTestForm()">Submit</button>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</mat-card>
+
+<br>
+
+<a href="/dashboard/lab-technician/lab-test-list">list-test</a>
