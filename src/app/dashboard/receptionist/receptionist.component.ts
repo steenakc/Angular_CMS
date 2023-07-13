@@ -20,5 +20,11 @@ export class RecptionistComponent implements OnInit {
     this.router.navigate(['/dashboard/receptionist/list-patient'])
 
   }
+  recptionistDashboard(){
+    this.router.navigate(['/dashboard/receptionist/dashboard'])
+  }
+  bookAppointments(){
+    this.router.navigate(['/dashboard/receptionist/book-appointment'])
+  }
 
 }

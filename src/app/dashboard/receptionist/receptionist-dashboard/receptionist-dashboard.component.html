@@ -1,0 +1,58 @@
+  <mat-card>
+    <mat-card-content>
+        
+        <mat-form-field class="example-full-width">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)" (click)="picker.open()">
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field style="padding: 25px;">
+            <mat-label>Select Department</mat-label>
+            <mat-select name="Department" (selectionChange)="onDepartmentChange()" [(ngModel)]="departmentIdSelected">
+              <mat-option *ngFor="let dep of departments" [value]="dep.deptId" >
+                {{dep.deptName }}
+              </mat-option> 
+            </mat-select>
+          </mat-form-field>
+          
+        
+    </mat-card-content>
+</mat-card>  
+ <p>dashboard works</p>
+<!-- ----------------------------------------- -->
+<!-- ----------------------------------------- -->
+<!-- ----------------------------------------- -->
+<!-- ----------------------------------------- -->
+
+
+ <mat-card style="margin-top: 10px;" *ngFor="let map of doctorList">
+    <mat-grid-list cols="6" rowHeight="100px">
+        <mat-grid-tile colspan="1">
+            <div>
+                <img style="height: 70px; width: 70px;
+            margin-right: 5px;" [src]="'http://localhost:9091/login/userimage?userId='+map.doctor.user.userId" alt="">
+                <div>
+                    <p>{{map.doctor.doctorName}}</p>
+                </div>
+            </div>
+
+        </mat-grid-tile>
+        <mat-grid-tile colspan="5">
+            <div style="width: 100%;">
+                <mat-grid-list cols="6" rowHeight="30px">
+                    <mat-grid-tile colspan="2" *ngFor="let slot of map.doctorSlotAppointments">
+                        <div style="width: 100%;">
+                            <p> {{slot.time}} - {{slot.patientName}}</p>
+                        </div>
+                    </mat-grid-tile>
+
+                </mat-grid-list>
+            </div>
+
+        </mat-grid-tile>
+
+
+
+    </mat-grid-list>
+</mat-card>  

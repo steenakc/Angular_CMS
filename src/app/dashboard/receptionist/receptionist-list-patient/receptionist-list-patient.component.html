@@ -1,1 +1,58 @@
-sfsafd
+<mat-card>
+  <mat-card-content style="width: 100%; text-align: center; font-size: 24px; font-weight: bold;">
+    Patient List
+  </mat-card-content>
+  <mat-form-field>
+    <mat-label><mat-icon>search</mat-icon></mat-label>
+    <input [(ngModel)]="searchTerm" matInput (keyup)="applyFilter()" placeholder="Enter Phone number or Name" #input>
+  </mat-form-field>
+</mat-card>
+
+<div class="mat-elevation-z8 demo-table" style="margin-top: 10px;">
+  <table>
+    <thead>
+      <tr>
+        <th>RegNo</th>
+        <th>Patient Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Gender</th>
+        <th>Blood Group</th>
+        <th>Phone Number</th>
+        <th>Settings</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of patientList">
+        <td>{{ item.patientRegNo }}</td>
+        <td>{{ item.patientName }}</td>
+        <td>{{ item.age }}</td>
+        <td>{{ item.address }}</td>
+        <td>{{ item.gender }}</td>
+        <td>{{ item.bloodGroup }}</td>
+        <td>{{ item.phNo }}</td>
+        <td>
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="disablePatient(item.patientId)">
+              <mat-icon>delete</mat-icon>
+              <span>Disable Patient</span>
+            </button>
+            <button mat-menu-item (click)="bookAppointment(item.patientId)">
+              <mat-icon>receipt</mat-icon>
+              <span>Book Appointment</span>
+            </button>
+            <button mat-menu-item (click)="updatePatient(item.patientId)">
+              <mat-icon>border_color</mat-icon>
+              <span>Update Patient Details</span>
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>

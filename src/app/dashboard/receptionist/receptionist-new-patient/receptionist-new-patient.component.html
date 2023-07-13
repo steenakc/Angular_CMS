@@ -77,19 +77,19 @@
       <mat-grid-tile colspan="1">
         <mat-form-field>
           <mat-label>Name</mat-label>
-          <input matInput name="name" [(ngModel)]="patientForm.name">
+          <input matInput name="name" [(ngModel)]="addPatientForm.patientName">
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile colspan="1">
         <mat-form-field>
           <mat-label>Age</mat-label>
-          <input matInput type="number" onwheel="return false;" name="age" [(ngModel)]="patientForm.age">
+          <input matInput type="number" onwheel="return false;" name="age" [(ngModel)]="addPatientForm.age">
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile colspan="1">
         <mat-form-field>
           <mat-label>Select Gender</mat-label>
-          <mat-select name="gender" [(ngModel)]="patientForm.gender">
+          <mat-select name="gender" [(ngModel)]="addPatientForm.gender">
             <mat-option value="Male">Male</mat-option>
             <mat-option value="Female">Female</mat-option>
             <mat-option value="Other">Other</mat-option>
@@ -99,7 +99,7 @@
       <mat-grid-tile colspan="1">
         <mat-form-field>
           <mat-label>Select Blood Group</mat-label>
-          <mat-select name="gender" [(ngModel)]="patientForm.bloodgroup">
+          <mat-select name="BloodGroup" [(ngModel)]="addPatientForm.bloodGroup">
             <mat-option value="Male">O+ve</mat-option>
             <mat-option value="Female">O-ve</mat-option>
             <mat-option value="Other">A+ve</mat-option>
@@ -115,14 +115,14 @@
         <mat-form-field class="example-full-width">
           <mat-label>Telephone</mat-label>
           <span matPrefix>+1 &nbsp;</span>
-          <input type="tel" matInput placeholder="555-555-1234">
+          <input name="TelephoneNo" [(ngModel)]="addPatientForm.phNo" type="tel" matInput placeholder="555-555-1234">
           <mat-icon matSuffix>mode_edit</mat-icon>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile colspan="1">
         <mat-form-field class="example-full-width">
           <mat-label>Address</mat-label>
-          <input matInput #message maxlength="256" placeholder="Ex. House name">
+          <input  name="address" [(ngModel)]="addPatientForm.adress" matInput #message maxlength="256" placeholder="Ex. House name">
           <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
           <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
         </mat-form-field>
