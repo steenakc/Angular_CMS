@@ -1,1 +1,82 @@
-<p>lab-test-list works!</p>
+
+<mat-card style="width: 160%;">
+    <form class="example-form">
+
+   <div class="demo-button-container">
+    <div class="example-button-row">
+        <button mat-raised-button (click)="insertTest()"color="warn"><mat-icon>note_add</mat-icon>ADD TEST</button>
+    </div>
+</div>
+<mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+
+
+<br><br><br>
+
+<mat-grid-tile colspan="2">
+    <div style="width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;">
+    Test List
+    </div>
+  </mat-grid-tile>
+  <br> <br>
+
+  <div class="mat-elevation-z8 demo-table">
+    
+    <table >
+        <thead >
+            <tr >
+                <ng-container matColumnDef="position" >
+                <th >Test Id</th> &nbsp;
+                <th >Test Name</th> &nbsp;
+                <th >High Range</th>&nbsp;
+                <th >Low Range</th>&nbsp;
+                <th >Unit</th>&nbsp;
+                <th >Test Price</th>&nbsp;
+                <th >Action</th>
+            </ng-container>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of testlist">
+                <ng-container matColumnDef="position">
+                <td >{{item.labTestId}}</td>&nbsp;
+                <td >{{item.testName}}</td>&nbsp;
+                <td >{{item.highRange}}</td>&nbsp;
+                <td >{{item.lowRange}}</td>&nbsp;
+                <td >{{item.unit}}</td>&nbsp;
+                <td>{{item.testPrice}}</td>&nbsp;
+                
+                <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="clickUpdate(item.labTestId)" >
+                        <mat-icon>update</mat-icon>
+                      <span >Update </span>
+                    </button>
+                    <button mat-menu-item  (click)="deleteTest(item.labTestId)">
+                        <mat-icon>delete_outline</mat-icon>
+                      <span> Disable </span>
+                    </button>
+
+                  </mat-menu>
+              </td>
+            </ng-container>
+                
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+      </mat-grid-list>
+      </form>
+  </mat-card>
+  
+
+  <!-- <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field> -->
