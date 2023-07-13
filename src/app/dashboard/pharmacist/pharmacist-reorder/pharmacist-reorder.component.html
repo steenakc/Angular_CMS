@@ -1,0 +1,60 @@
+<mat-card>
+    <form class="example-form">
+      <mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+  
+        <mat-grid-tile colspan="2">
+          <div style="width: 100%; text-align: center; font-size: 24px; font-weight: bold;">
+            Reorder Stock
+          </div>
+        </mat-grid-tile>
+  
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>Medicine</mat-label>
+            <mat-select name="medicineId" [(ngModel)]="patientForm.medicineId">
+              <mat-option *ngFor="let medicine of med" [value]="medicine.medicineId">
+                {{ medicine.medicineName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+  
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>Medicine Company</mat-label>
+            <mat-select name="medicineCompanyId" [(ngModel)]="patientForm.medicineCompanyId">
+              <mat-option *ngFor="let company of companies" [value]="company.medicneCompanyId">
+                {{ company.companyName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+  
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>No Of Boxes</mat-label>
+            <input matInput type="number" onwheel="return false;" name="noOfBoxes" [(ngModel)]="patientForm.noOfBoxes">
+          </mat-form-field>
+        </mat-grid-tile>
+  
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>Unit Per Boxes</mat-label>
+            <input matInput type="number" onwheel="return false;" name="unitPerBox" [(ngModel)]="patientForm.unitPerBox">
+          </mat-form-field>
+        </mat-grid-tile>
+  
+        <mat-grid-tile colspan="2" rowspan="2">
+          <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
+            <button mat-raised-button color="warn">Cancel</button>
+            <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="submitPatientForm()">Submit</button>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+  
+  <br>
+  
+  <a href="/dashboard/pharmacist/list-stock">list-stock</a>
+  

@@ -1,0 +1,40 @@
+// /* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+//   td , th{
+//    padding: 10px;
+//   }
+  tr{
+    border-bottom: 1px solid #888888;
+  }
+
+  
+  
+  th, td {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    padding-bottom: 200%;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .mat-button {
+    min-width: 120px;
+  }

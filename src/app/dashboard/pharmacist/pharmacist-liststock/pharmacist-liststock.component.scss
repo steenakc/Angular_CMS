@@ -1,0 +1,40 @@
+/* Structure */
+
+// .mat-mdc-form-field {
+//     text-align: center;
+//     font-size: 45%;
+//     font-family: 'Times New Roman', Times, serif;
+//     width: 100%;
+//   }
+
+// table{
+//     width: 100%;
+//     text-align: center;
+//     color: blueviolet;
+//     border-collapse: collapse;
+//     font-family: 'Times New Roman', Times, serif;
+
+// }
+ 
+// table td, table th{
+//     border: 1px solid blueviolet;
+//     padding: 10px;
+//     min-height: 160px;
+//     font-size: large;
+//     font-family: 'Times New Roman', Times, serif;
+// }
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  td , th{
+   padding: 10px;
+  }
+  tr{
+    border-bottom: 1px solid #888888;
+  }
