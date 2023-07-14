@@ -17,7 +17,7 @@ export class PharmacistEditcompanyComponent implements OnInit {
     
   }
   medicneCompanyId:number;
-  constructor(public listcompany:AddstockService,private route:ActivatedRoute) { }
+  constructor(public listcompany:AddstockService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -44,29 +44,35 @@ export class PharmacistEditcompanyComponent implements OnInit {
 
   submitCompany(){
     if (!this.companyForm.companyName) {
-      alert("Enter the medicine name");
+      alert("Company name should not be empty");
       return;
     }
     if (!this.companyForm.companyAddress) {
-      alert("Enter a valid address");
+      alert("Company address should not be empty");
       return;
     }
     if (!this.companyForm.contactNo) {
-      alert("Select the company");
+      alert("Emergency contact number should not be empty");
+      return;
+    }
+    if (this.companyForm.contactNo.length !== 10) {
+      alert("Contact number should be 10 digits");
       return;
     }
 /*
 * add other validations here
 */
-    console.log(this.companyForm);
-    this.listcompany.getCompany(this.companyForm).subscribe((response)=>{
-      console.log(response);
-      alert("data added successfully");
-    });
+console.log(this.companyForm);
+this.listcompany.insertCompany(this.companyForm).then((response)=>{
+  console.log(response);
+  alert("Company details updated successfully");
+  this.router.navigate(['dashboard/pharmacist/list-company'])
+});
 
   }
 
   cancel(){
+    this.router.navigate(['dashboard/pharmacist/list-company'])
 
   }
 }

@@ -7,21 +7,21 @@
           text-align: center;
           font-size: 24px;
           font-weight: bold;">
-            Add Company
+            Update Company Form
           </div>
         </mat-grid-tile>
   
         <mat-grid-tile colspan="1">
           <mat-form-field>
             <mat-label>Company Name</mat-label>
-            <input matInput name="companyName" [(ngModel)]="companyForm.companyName">
+            <input matInput name="companyName" [(ngModel)]="companyForm.companyName" disabled>
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile colspan="1">
             <mat-form-field>
               <mat-label>Company Address</mat-label>
-              <input matInput name="companyAddress" [(ngModel)]="companyForm.companyAddress">
+              <input matInput name="companyAddress" [(ngModel)]="companyForm.companyAddress" disabled>
             </mat-form-field>
           </mat-grid-tile>
   
@@ -52,5 +52,4 @@
   
   <br>
   
-  <a routerLink="/dashboard/pharmacist/list-company">List Company</a>
   

@@ -32,21 +32,21 @@
   
         <mat-grid-tile colspan="1">
           <mat-form-field>
-            <mat-label>No Of Boxes</mat-label>
-            <input matInput type="number" onwheel="return false;" name="noOfBoxes" [(ngModel)]="patientForm.noOfBoxes">
+            <mat-label>Count</mat-label>
+            <input matInput type="number" onwheel="return false;" name="count" [(ngModel)]="patientForm.count">
           </mat-form-field>
         </mat-grid-tile>
   
-        <mat-grid-tile colspan="1">
+        <!-- <mat-grid-tile colspan="1">
           <mat-form-field>
             <mat-label>Unit Per Boxes</mat-label>
             <input matInput type="number" onwheel="return false;" name="unitPerBox" [(ngModel)]="patientForm.unitPerBox">
           </mat-form-field>
-        </mat-grid-tile>
+        </mat-grid-tile> -->
   
         <mat-grid-tile colspan="2" rowspan="2">
           <div style="width: 100%; display: flex; justify-content: center; margin-top: 30px;">
-            <button mat-raised-button color="warn">Cancel</button>
+            <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
             <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="submitPatientForm()">Submit</button>
           </div>
         </mat-grid-tile>
@@ -56,5 +56,3 @@
   
   <br>
   
-  <a href="/dashboard/pharmacist/list-stock">list-stock</a>
-  <p>hello</p>

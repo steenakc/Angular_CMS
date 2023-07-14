@@ -4,9 +4,9 @@
 
       <mat-grid-tile colspan="2">
         <div style="width: 100%;
-        text-align: center;
+        text-align:center;
         font-size: 24px;
-        font-weight: bold;">
+        font-weight: bold;padding-right: 12%;">
      Add Stock 
         </div>
       </mat-grid-tile>
@@ -17,8 +17,9 @@
           <mat-select name="medicineId" [(ngModel)]="patientForm.medicineId">
             <mat-option *ngFor="let medicine of med" [value]="medicine.medicineId">{{ medicine.medicineName }}</mat-option>
           </mat-select>
-        </mat-form-field>
-        <a href="/dashboard/pharmacist/add-medicine">AddMedicine</a>
+        </mat-form-field> &nbsp;
+        <mat-list-item (click)="addMed()" style="cursor: pointer; padding-left:7%;padding-top: 2%;">Add Medicine</mat-list-item>
+        <!-- <a href="/dashboard/pharmacist/add-medicine">AddMedicine</a> -->
       </mat-grid-tile>
 
 
@@ -65,5 +66,3 @@
 </mat-card>
 
 <br>
-
-<a href="/dashboard/pharmacist/list-stock">list-stock</a>

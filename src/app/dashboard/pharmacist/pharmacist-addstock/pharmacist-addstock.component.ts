@@ -50,18 +50,19 @@ export class PharmacistAddstockComponent implements OnInit {
   }
   
   submitPatientForm(){
-    if(!this.patientForm.noOfBoxes==null||+this.patientForm.noOfBoxes<1)
-    {
-      alert("Enter the no of boxes greater than or equal to 0");
-      return;
-    }
     if(!this.patientForm.medicineId){
       alert("Enter Medicine Name")
       return;
     }
+    if(!this.patientForm.noOfBoxes==null||+this.patientForm.noOfBoxes<1)
+    {
+      alert("Enter the no of boxes greater than 0");
+      return;
+    }
+    
     if(!this.patientForm.unitPerBox==null||+this.patientForm.unitPerBox<1)
     {
-      alert("Enter the unit per box greater than or equal to 0");
+      alert("Enter the unit per box greater than  0");
       return;
     }
 /*
@@ -70,14 +71,19 @@ export class PharmacistAddstockComponent implements OnInit {
     console.log(this.patientForm);
     this.addstockService.insertStock(this.patientForm).then((response)=>{
       console.log(response);
-      alert("data added successfully");
+      alert("Stock added successfully");
+      this.router.navigate(['dashboard/pharmacist/list-stock']);
       
     });
     
   }
   cancel(){
-    
-  }
+    this.router.navigate(['dashboard/pharmacist/list-stock']);
 
+  }
+  addMed(){
+    this.router.navigate(['dashboard/pharmacist/add-medicine']);
+
+  }
  
 }

@@ -7,14 +7,14 @@
           text-align: center;
           font-size: 24px;
           font-weight: bold;">
-            Update Medicine
+            Update Medicine Form
           </div>
         </mat-grid-tile>
   
         <mat-grid-tile colspan="1">
           <mat-form-field>
             <mat-label>Medicine Name</mat-label>
-            <input matInput name="medicineName" [(ngModel)]="medicineForm.medicineName">
+            <input matInput name="medicineName" [(ngModel)]="medicineForm.medicineName" disabled>
           </mat-form-field>
         </mat-grid-tile>
   
@@ -28,7 +28,7 @@
         <mat-grid-tile colspan="1">
           <mat-form-field>
             <mat-label>Company Name</mat-label>
-            <mat-select name="medicneCompanyId" [(ngModel)]="medicineForm.medicneCompanyId">
+            <mat-select name="medicneCompanyId" [(ngModel)]="medicineForm.medicneCompanyId" disabled>
               <mat-option *ngFor="let comp of company" [value]="comp.medicneCompanyId">{{ comp.companyName }}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -50,6 +50,5 @@
   
   <br>
   
-  <a routerLink="/dashboard/pharmacist/list-medicine">List Medicines</a>
   
   
