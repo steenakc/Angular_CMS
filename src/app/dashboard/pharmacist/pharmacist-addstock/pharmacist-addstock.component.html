@@ -1,123 +1,53 @@
- <!-- <mat-card class="custom-card">
-  <mat-card-content>
-    <form name="stockform"  autocomplete="false" >
-      <input type="hidden" name="medicineStockId" [(ngModel)]="formData.medicineStockId">
-         
-      <div class="form-group">
-        <mat-form-field>
-          <mat-label>Medicine</mat-label>
-          <input matInput name="medicineId"   [(ngModel)]="formData.medicineId"
-          placeholder="Enter medicine" required>
-        </mat-form-field>
-        <div class="validation-error" *ngIf="medicineId.touched&& medicineId.invalid"></div>
-      </div>
-  `   <br>
-
-      <div class="form-group">
-        <mat-form-field>
-          <mat-label>No of boxes</mat-label>
-          <input matInput name="noOfBoxes"   [(ngModel)]="formData.noOfBoxes"
-           placeholder="Enter no of boxes" type="number" min="0">
-        </mat-form-field>
-        <div class="validation-error" *ngIf="noOfBoxes.touched&& noOfBoxes.invalid"></div>
-      </div>
-
-      <div class="form-group">
-        <mat-form-field>
-          <mat-label>Unit Per Box</mat-label>
-          <input matInput name="unitPerBox"  [(ngModel)]="formData.unitPerBox"
-          placeholder="Enter unit per box" type="number" min="0">
-        </mat-form-field>
-        <div class="validation-error" *ngIf="unitPerBox.touched&& unitPerBox.invalid"></div>
-      </div>
-
-      <div class="form-group">
-          <mat-form-field>
-            <mat-label>Expiry Date</mat-label>
-            <input matInput type="date" name="expiryDate" 
-            [(ngModel)]="formData.expiryDate"
-            placeholder="Enter expiry date" [min]="today" required>
-          </mat-form-field>
-          <div class="validation-error" *ngIf="expiryDate.touched&& expiryDate.invalid"></div>
-        </div>
-      
-        
-
-      <div class="form-group">
-        <button mat-raised-button color="primary" [disabled]="!(form.valid && form.dirty)" type="submit">Submit</button>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
-<br>
-<br> -->
-
-
 <mat-card>
   <form class="example-form">
     <mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
 
       <mat-grid-tile colspan="2">
         <div style="width: 100%;
-        text-align: center;
+        text-align:center;
         font-size: 24px;
-        font-weight: bold;">
+        font-weight: bold;padding-right: 12%;">
      Add Stock 
         </div>
       </mat-grid-tile>
+
       <mat-grid-tile colspan="1">
         <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput name="name" [(ngModel)]="patientForm.name">
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="1">
-        <mat-form-field>
-          <mat-label>Age</mat-label>
-          <input matInput type="number" onwheel="return false;" name="age" [(ngModel)]="patientForm.age">
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="1">
-        <mat-form-field>
-          <mat-label>Select Gender</mat-label>
-          <mat-select name="gender" [(ngModel)]="patientForm.gender">
-            <mat-option value="Male">Male</mat-option>
-            <mat-option value="Female">Female</mat-option>
-            <mat-option value="Other">Other</mat-option>
+          <mat-label>Medicine</mat-label>
+          <mat-select name="medicineId" [(ngModel)]="patientForm.medicineId">
+            <mat-option *ngFor="let medicine of med" [value]="medicine.medicineId">{{ medicine.medicineName }}</mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field> &nbsp;
+        <mat-list-item (click)="addMed()" style="cursor: pointer; padding-left:7%;padding-top: 2%;">Add Medicine</mat-list-item>
+        <!-- <a href="/dashboard/pharmacist/add-medicine">AddMedicine</a> -->
       </mat-grid-tile>
+
+
       <mat-grid-tile colspan="1">
         <mat-form-field>
-          <mat-label>Select Blood Group</mat-label>
-          <mat-select name="gender" [(ngModel)]="patientForm.bloodgroup">
-            <mat-option value="Male">O+ve</mat-option>
-            <mat-option value="Female">O-ve</mat-option>
-            <mat-option value="Other">A+ve</mat-option>
-            <mat-option value="Female">A-ve</mat-option>
-            <mat-option value="Male">B+ve</mat-option>
-            <mat-option value="Other">B-ve</mat-option>
-            <mat-option value="Male">AB+ve</mat-option>
-            <mat-option value="Other">AB-ve</mat-option>
-          </mat-select>
+          <mat-label>No Of Boxes</mat-label>
+          <input matInput type="number" onwheel="return false;" name="noOfBoxes" [(ngModel)]="patientForm.noOfBoxes">
         </mat-form-field>
       </mat-grid-tile>
+
       <mat-grid-tile colspan="1">
-        <mat-form-field class="example-full-width">
-          <mat-label>Telephone</mat-label>
-          <span matPrefix>+1 &nbsp;</span>
-          <input type="tel" matInput placeholder="555-555-1234">
-          <mat-icon matSuffix>mode_edit</mat-icon>
+        <mat-form-field>
+          <mat-label>Unit Per Boxes</mat-label>
+          <input matInput type="number" onwheel="return false;" name="unitPerBox" [(ngModel)]="patientForm.unitPerBox">
         </mat-form-field>
       </mat-grid-tile>
+
+
       <mat-grid-tile colspan="1">
-        <mat-form-field class="example-full-width">
-          <mat-label>Address</mat-label>
-          <input matInput #message maxlength="256" placeholder="Ex. House name">
-          <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
-          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        <mat-form-field>
+          <mat-label>Expiry Date</mat-label>
+          <input matInput type="date" name="expiryDate" 
+          [(ngModel)]="patientForm.expiryDate"
+          placeholder="Enter expiry date" [min]="today" required>
         </mat-form-field>
       </mat-grid-tile>
+
+
       <mat-grid-tile colspan="2" rowspan ="2">
         <div style="    width: 100%;;
         display: flex;
@@ -128,7 +58,11 @@
           (click)="submitPatientForm()"> Submit</button>
         </div>
       </mat-grid-tile>
-
     </mat-grid-list>
+
+    
+
   </form>
 </mat-card>
+
+<br>

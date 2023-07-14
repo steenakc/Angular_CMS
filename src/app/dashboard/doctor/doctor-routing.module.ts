@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DoctorComponent } from './doctor.component';
 import { ViewAppointmentComponent } from './view-appointment/view-appointment.component';
 import { DiagnosisComponent } from './diagnosis/diagnosis.component';
-
+import { DoctorPrescriptionComponent } from './doctor-prescription/doctor-prescription.component';
 
 const routes: Routes = [
   {
@@ -22,7 +22,13 @@ const routes: Routes = [
     }
     ,
     {
-      path:'diagnosis',
+      path:'doctor-prescription/:appointmentId/:patientId',
+      component:DoctorPrescriptionComponent,
+
+    }
+    ,
+    {
+      path:'diagnosis/:appointmentId/:patientId/:patientName/:bloodGroup/:age/:gender',
       component:DiagnosisComponent,
 
     }

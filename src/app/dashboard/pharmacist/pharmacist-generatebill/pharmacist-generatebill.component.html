@@ -1,0 +1,63 @@
+<br> <br> <br>
+<mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+    <br><br>
+    <mat-card style="background-color: lightblue;">
+        
+        <mat-grid-tile colspan="2">
+            <div style="width: 100%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;">
+            Bill Receipt
+            </div>
+          </mat-grid-tile>
+  
+      <form class="example-form">
+        <br><br>
+  
+        <div class="mat-elevation-z8 demo-table" style="background-color: whitesmoke;">
+          <table>
+            <thead>
+              <tr>
+                <th>Medicine Name</th>
+                <th>Count</th>
+                <th>Rate</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container matColumnDef="position" *ngFor="let item of medicineprescriptionlist" >
+                <tr>
+                <td>{{ item.medicne.medicineName }}</td>
+                <td>{{item.count}}  </td>
+                <td>{{ item.medicne.rate }}</td>
+                <td>{{ item.count * item.medicne.rate }}</td>
+              </tr>
+
+              </ng-container>       
+            </tbody>
+          </table>
+        </div>
+  
+
+       
+
+      </form>
+
+
+
+    </mat-card>
+    <br><br><br>
+  
+   
+    <div class="button-container" style="text-align:center;">
+       
+        <div class="button-group" >
+          <button mat-raised-button color="warn" (click)="cancel()" >Cancel</button> &nbsp; &nbsp; &nbsp;
+          <button mat-raised-button color="primary" onclick="window.print()">Print</button>
+        </div>
+      
+    </div>
+  
+  </mat-grid-list>
+  

@@ -1,6 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddtestService } from 'src/app/service/addtest.service';
+
+
 
 @Component({
   selector: 'app-lab-bill',
@@ -8,6 +11,7 @@ import { AddtestService } from 'src/app/service/addtest.service';
   styleUrls: ['./lab-bill.component.scss']
 })
 export class LabBillComponent implements OnInit {
+<<<<<<< HEAD
 appointmentId:number;
 listprescribe1:any;
 listprescribe2:any
@@ -16,6 +20,18 @@ listprescribe2:any
   ngOnInit(): void {
 
     this.activatedroute.paramMap.subscribe(params=>{
+=======
+
+  appointmentId:number;
+  medicineprescriptionlist:any
+  medicineprescriptionlist1:any
+
+  constructor(private listmedicineprescription:AddstockService,private router: Router,private activatedrouter:ActivatedRoute) { }
+
+
+  ngOnInit(): void {
+    this.activatedrouter.paramMap.subscribe(params=>{
+>>>>>>> e263b93728d55a7c622cdeaaecbf6519aad3cefc
       this.appointmentId=Number(params.get('appointmentId'));
       console.log(this.appointmentId);
     })

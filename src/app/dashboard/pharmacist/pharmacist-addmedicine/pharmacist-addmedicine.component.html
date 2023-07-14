@@ -1,0 +1,53 @@
+<mat-card>
+    <form class="example-form">
+      <mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+  
+        <mat-grid-tile colspan="2">
+          <div style="width: 100%;
+          text-align: center;
+          font-size: 24px;
+          font-weight: bold;padding-right: 9%;">
+            Add Medicine
+          </div>
+        </mat-grid-tile>
+  
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>Medicine Name</mat-label>
+            <input matInput name="medicineName" [(ngModel)]="medicineForm.medicineName">
+          </mat-form-field>
+        </mat-grid-tile>
+  
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>Rate</mat-label>
+            <input matInput type="number" name="rate" [(ngModel)]="medicineForm.rate">
+          </mat-form-field>
+        </mat-grid-tile>
+  
+        <mat-grid-tile colspan="1">
+          <mat-form-field>
+            <mat-label>Company Name</mat-label>
+            <mat-select name="medicneCompanyId" [(ngModel)]="medicineForm.medicneCompanyId">
+              <mat-option *ngFor="let comp of company" [value]="comp.medicneCompanyId">{{ comp.companyName }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-list-item (click)="addComp()" style="cursor: pointer; padding-left:7%;padding-top:4%;">Add Company</mat-list-item>
+          <!-- <a href="/dashboard/pharmacist/add-company">AddCompany</a> -->
+        </mat-grid-tile>
+  
+        <mat-grid-tile colspan="2" rowspan="2">
+          <div style="width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 30px;">
+            <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+            <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="submitMedicine()">Submit</button>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card>
+  
+  <br>
+  

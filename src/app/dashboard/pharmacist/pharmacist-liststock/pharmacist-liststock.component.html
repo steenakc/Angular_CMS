@@ -1,0 +1,74 @@
+<mat-form-field appearance="fill">
+  <mat-icon matPrefix>search</mat-icon>
+  <input matInput placeholder="Search" [(ngModel)]="searchTerm" (ngModelChange)="applyFilter()">
+</mat-form-field>
+
+
+    <div class="demo-button-container">
+      <button mat-raised-button (click)="insertStock()" style="cursor: pointer;" class="demo-button" color="primary">
+        Add Stock
+      </button>
+      <br><br>
+    </div>
+    
+    <mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+      <mat-card>
+        
+    <mat-grid-tile colspan="2">
+      <div style="width: 100%; text-align: center; font-size: 24px; font-weight: bold;">
+        Stock List
+      </div>
+    </mat-grid-tile>
+
+    <form class="example-form">
+      <br><br>
+
+      <div class="mat-elevation-z8 demo-table">
+        <table>
+          <thead>
+            <tr>
+              <ng-container matColumnDef="position">
+                <th>Medicine</th>
+                <th>No Of Boxes</th>
+                <th>Unit Per Boxes</th>
+                <th>Expiry Date</th>
+                <th>Action</th>
+              </ng-container>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of filteredList">
+              <ng-container matColumnDef="position">
+                <td>{{ item.medicine.medicineName }}</td>
+                <td>{{ item.noOfBoxes }}</td>
+                <td>{{ item.unitPerBox }}</td>
+                <td>{{ item.expiryDate }}</td>
+                <td>
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="deleteMedicine(item.medicineStockId)">
+                      <mat-icon>delete</mat-icon>
+                      <span>Disable</span>
+                    </button>
+                    <button mat-menu-item (click)="editMedicine(item.medicineStockId)">
+                      <mat-icon>border_color</mat-icon>
+                      <span>Update</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+
+    <br><br><br>
+  </mat-card><br>
+  <div>
+    <button mat-raised-button  class="example-button-row" color="warn" (click)="stocksLists()">Back</button>
+  </div>
+</mat-grid-list>

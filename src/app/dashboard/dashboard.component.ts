@@ -15,8 +15,15 @@ export class DashboardComponent implements OnInit {
 
   constructor(private sessionService:SessionService,private router :Router) { }
 staffName:string='';
+userId:number=0;
   ngOnInit(): void {
-    this.staffName=this.sessionService.staff.userFullName;
+    //this.staffName=this.sessionService.staff.userFullName;
+    try {
+      this.staffName=this.sessionService.staff.userFullName;
+      this.userId=this.sessionService.staff.userId;
+    } catch (error) {
+    }
+   
   }
   loginOut(){
     this.router.navigate(['/authenticate'])

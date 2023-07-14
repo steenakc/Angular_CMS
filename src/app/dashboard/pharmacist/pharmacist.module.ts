@@ -19,10 +19,41 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { PharmacistListstockComponent } from './pharmacist-liststock/pharmacist-liststock.component';
+import { PharmacistAddmedicineComponent } from './pharmacist-addmedicine/pharmacist-addmedicine.component';
+import { PharmacistListmedicineComponent } from './pharmacist-listmedicine/pharmacist-listmedicine.component';
+
+import {MatMenuModule} from '@angular/material/menu';
+import { PharmacistAddcompanyComponent } from './pharmacist-addcompany/pharmacist-addcompany.component';
+import { PharmacistListcompanyComponent } from './pharmacist-listcompany/pharmacist-listcompany.component';
+import { PharmacistListprescriptionComponent } from './pharmacist-listprescription/pharmacist-listprescription.component';
+import { PharmacistListmedicineprescriptionComponent } from './pharmacist-listmedicineprescription/pharmacist-listmedicineprescription.component';
+import { PharmacistBillComponent } from './pharmacist-bill/pharmacist-bill.component';
+import { PharmacistGeneratebillComponent } from './pharmacist-generatebill/pharmacist-generatebill.component';
+import { PharmacistReorderComponent } from './pharmacist-reorder/pharmacist-reorder.component';
+import { PharmacistEditstockComponent } from './pharmacist-editstock/pharmacist-editstock.component';
+import { PharmacistEditmedicineComponent } from './pharmacist-editmedicine/pharmacist-editmedicine.component';
+import { PharmacistEditcompanyComponent } from './pharmacist-editcompany/pharmacist-editcompany.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     PharmacistComponent, PharmacistAddstockComponent,
-    PaharmacistStockmanagmentComponent
+    PaharmacistStockmanagmentComponent,
+    PharmacistListstockComponent,
+    
+    PharmacistAddmedicineComponent,
+    PharmacistListmedicineComponent,
+    PharmacistAddcompanyComponent,
+    PharmacistListcompanyComponent,
+    PharmacistListprescriptionComponent,
+    PharmacistListmedicineprescriptionComponent,
+    PharmacistBillComponent,
+    PharmacistGeneratebillComponent,
+    PharmacistReorderComponent,
+    PharmacistEditstockComponent,
+    PharmacistEditmedicineComponent,
+    PharmacistEditcompanyComponent,
   ],
   imports: [
     CommonModule,
@@ -51,7 +82,10 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
      MatFormFieldModule,
       MatInputModule,
-      MatCardModule
+      MatCardModule,
+
+      MatMenuModule,
+      MatPaginatorModule
       
   ]
 })

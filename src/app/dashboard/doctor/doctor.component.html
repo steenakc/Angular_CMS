@@ -1,12 +1,27 @@
+<mat-grid-list class="mat-grid-tiles-align-start" cols="4" rowHeight="100%">
+    <mat-grid-tile class="secondary-color-background" colspan="1">
+  
+      <mat-list style="width: 100%; padding: 10px;">
+        <mat-list-item style="cursor: pointer;"><mat-icon>dashboard</mat-icon>Dash Board</mat-list-item>
+        <mat-divider></mat-divider>
+       
+        <mat-list-item (click)="listAppointments()" style="cursor: pointer;"><mat-icon>account_box</mat-icon>
+            Todays Appontments</mat-list-item>
+        <mat-divider></mat-divider>
+       
+      </mat-list>
+  
+  
+  
+  
+    </mat-grid-tile>
+  
+    <mat-grid-tile colspan="3" rowspan="1" style="overflow-y:scroll;">
+      <div style="width: 100%; padding: 10px;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 
-<div>
-    <a href="dashboard/doctor/view-appointment">Todays Appontments</a>
-</div>
-<div>
-    <a href="dashboard/doctor/diagnosis">Diagnosis</a>
-</div>
 
-<div style="min-height: 100px;">
-    <router-outlet></router-outlet>
-</div>
 

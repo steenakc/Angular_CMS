@@ -14,14 +14,29 @@
   
       <mat-list style="width: 100%; padding: 10px;">
         <mat-divider></mat-divider>
-        <mat-list-item  style="cursor: pointer;"><mat-icon>account_box</mat-icon> <a href="/dashboard/pharmacist/stock">stock-management</a></mat-list-item>
+        <mat-list-item (click)="stock()" style="cursor: pointer;"><mat-icon >account_box</mat-icon> stock-management</mat-list-item>
           <mat-divider></mat-divider>
-        <mat-list-item  style="cursor: pointer;">
+
+          <mat-divider></mat-divider>
+        <mat-list-item (click)="prescription()" style="cursor: pointer;"><mat-icon>account_box</mat-icon> Prescription-management</mat-list-item>
+          <mat-divider></mat-divider>
+
+        <!-- <mat-list-item  style="cursor: pointer;">
             <mat-icon>account_box</mat-icon>
             <a href="/dashboard/pharmacist/add-stock">add stock</a></mat-list-item>
         <mat-divider></mat-divider>
-        </mat-list>
+        -->
+
+        <mat-list-item  (click)="restock()"style="cursor: pointer;">
+          <mat-icon>account_box</mat-icon>
+          Reorder Stock</mat-list-item>
+      <mat-divider></mat-divider>
+     
+    </mat-list>
     </mat-grid-tile>
+
+    
+
   
     <mat-grid-tile colspan="3" rowspan="1">
       <div style="width: 100%; padding: 10px;">

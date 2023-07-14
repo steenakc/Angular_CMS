@@ -10,6 +10,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
 
 //import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -18,6 +20,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { ReceptionistListPatientComponent } from './receptionist-list-patient/receptionist-list-patient.component';
+import { ReceptionistDashboardComponent } from './receptionist-dashboard/receptionist-dashboard.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { ReceptionistBookAppointmentComponent } from './receptionist-book-appointment/receptionist-book-appointment.component';
+import { ReceptionistUpdatePatientComponent } from './receptionist-update-patient/receptionist-update-patient.component';
+import { RespAppointmentViewComponent } from './resp-appointment-view/resp-appointment-view.component';
+import { RecepBillComponent } from './recep-bill/recep-bill.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -25,11 +34,13 @@ import { ReceptionistListPatientComponent } from './receptionist-list-patient/re
 
 
 @NgModule({
-  declarations: [RecptionistComponent, ReceptionistSearchComponent, ReceptionistNewPatientComponent, ReceptionistListPatientComponent],
+  declarations: [RecptionistComponent, ReceptionistSearchComponent, ReceptionistNewPatientComponent, ReceptionistListPatientComponent, ReceptionistDashboardComponent, ReceptionistBookAppointmentComponent, ReceptionistUpdatePatientComponent, RespAppointmentViewComponent, RecepBillComponent],
   imports: [
     CommonModule,
     ReceptionistRoutingModule,
-
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMenuModule,
     MatSelectModule,
     MatButtonModule,
      MatCheckboxModule,
@@ -40,7 +51,8 @@ import { ReceptionistListPatientComponent } from './receptionist-list-patient/re
     FormsModule,
      MatFormFieldModule,
       MatInputModule,
-      MatCardModule
+      MatCardModule,
+      MatPaginatorModule
     
   ]
 })

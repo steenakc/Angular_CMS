@@ -1,0 +1,71 @@
+<mat-form-field appearance="fill">
+  <mat-icon matPrefix>search</mat-icon>
+  <input matInput placeholder="Search" [(ngModel)]="searchTerm" (ngModelChange)="applyFilter()">
+</mat-form-field>
+
+<mat-card>
+  <div class="demo-button-container">
+    <button mat-raised-button (click)="insertCompany()" style="cursor: pointer;" class="demo-button" color="primary">
+      Add Company
+    </button>
+    <br>
+  </div>
+</mat-card>
+
+<mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
+  <mat-card>
+    <mat-grid-tile colspan="2">
+      <div style="width: 100%; text-align: center; font-size: 24px; font-weight: bold;">
+        Company List
+      </div>
+    </mat-grid-tile>
+
+    <form class="example-form">
+      <br><br>
+
+      <div class="mat-elevation-z8 demo-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Company Name</th>
+              <th>Company Address</th>
+              <th>Emergency Contact No</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of filteredList">
+              <ng-container matColumnDef="position">
+                <td>{{ item.companyName }}</td>
+                <td>{{ item.companyAddress }}</td>
+                <td>{{ item.contactNo }}</td>
+
+                <td>
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="deleteCompany(item.medicneCompanyId)">
+                      <mat-icon>delete</mat-icon>
+                      <span>Disable</span>
+                    </button>
+                    <button mat-menu-item (click)="editCompany(item.medicneCompanyId)">
+                      <mat-icon>border_color</mat-icon>
+                      <span>Update</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+    
+  </mat-card><br>
+  <div>
+    <button mat-raised-button  class="example-button-row" color="warn" (click)="medicinesLists()">Back</button>
+  </div>
+  <br><br>
+</mat-grid-list>
