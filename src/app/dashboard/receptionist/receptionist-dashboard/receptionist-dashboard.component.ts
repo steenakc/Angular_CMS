@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { ReceptionistService } from 'src/app/service/receptionist.service';
 
 @Component({
@@ -10,8 +11,10 @@ import { ReceptionistService } from 'src/app/service/receptionist.service';
 })
 export class ReceptionistDashboardComponent implements OnInit {
 
-  constructor(private datePipe: DatePipe, private recptionistService: ReceptionistService) { }
-  dateSelected = null;
+  constructor(private datePipe: DatePipe, private recptionistService: ReceptionistService,
+    private router: Router
+  ) { }
+  dateSelected: any = new Date();
   departmentIdSelected: number = 1;
   departments: any[];
 
@@ -24,6 +27,9 @@ export class ReceptionistDashboardComponent implements OnInit {
   listDepartments() {
     this.recptionistService.getDepartments().then((result) => {
       this.departments = result;
+      if (this.dateSelected != null && this.departmentIdSelected > 0) {
+        this.populateDashboardDetails();
+      }
     });
     // }
     // this.listDepartments.getDepartments().then((result) => {
@@ -38,7 +44,7 @@ export class ReceptionistDashboardComponent implements OnInit {
     const formattedDate = this.datePipe.transform(selectedDate, 'yyyy-MM-dd');
     this.dateSelected = formattedDate;
     console.log(formattedDate); // Output: "2023 07 09" (example date format)
-  
+
     if (this.dateSelected != null && this.departmentIdSelected > 0) {
       this.populateDashboardDetails();
     }
@@ -56,7 +62,34 @@ export class ReceptionistDashboardComponent implements OnInit {
       console.log(response);
       this.doctorList = response;
     });
+  }
+  clickOnSlot(slot: any) {
+    try {
+      if (slot.appointment_id && +slot.appointment_id > 0) {
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+            "AppointmentId": slot.appointment_id,
+            "index": Math.round(Math.random() * 10000),
+          },
+          skipLocationChange: false
+        };
+        this.router.navigate(["/dashboard/receptionist/view-appointment"], navigationExtras);
+      } else {
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+            "doctorId": slot.doctor_id,
+            "time": slot.time,
+            "date": this.dateSelected,
+            "departmentId": this.departmentIdSelected,
+            "index": Math.round(Math.random() * 10000),
+          },
+          skipLocationChange: false
+        };
+        this.router.navigate(["/dashboard/receptionist/list-patient"], navigationExtras);
+      }
+    } catch (error) {
 
+    }
 
   }
 }

@@ -14,19 +14,19 @@
         <mat-grid-tile colspan="1">
           <mat-form-field>
             <mat-label>Name</mat-label>
-            <input matInput name="name" [(ngModel)]="editPatientForm.patientName">
+            <input disabled="true" matInput name="name" [(ngModel)]="editPatientForm.patientName">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile colspan="1">
           <mat-form-field>
             <mat-label>Age</mat-label>
-            <input matInput type="number" onwheel="return false;" name="age" [(ngModel)]="editPatientForm.age">
+            <input disabled="true" matInput type="number" onwheel="return false;" name="age" [(ngModel)]="editPatientForm.age">
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile colspan="1">
           <mat-form-field>
             <mat-label>Select Gender</mat-label>
-            <mat-select name="gender" [(ngModel)]="editPatientForm.gender">
+            <mat-select  name="gender" [(ngModel)]="editPatientForm.gender">
               <mat-option value="Male">Male</mat-option>
               <mat-option value="Female">Female</mat-option>
               <mat-option value="Other">Other</mat-option>

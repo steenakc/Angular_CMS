@@ -58,7 +58,7 @@ export class ReceptionistUpdatePatientComponent implements OnInit {
      });
   }
   cancel() {
-
+    this.router.navigate(['/dashboard/receptionist/list-patient'])
   }
 
 }
