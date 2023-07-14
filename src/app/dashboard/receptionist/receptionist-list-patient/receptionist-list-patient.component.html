@@ -6,6 +6,8 @@
     <mat-label><mat-icon>search</mat-icon></mat-label>
     <input [(ngModel)]="searchTerm" matInput (keyup)="applyFilter()" placeholder="Enter Phone number or Name" #input>
   </mat-form-field>
+  <!-- <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="addPatient()"> Add Patient</button> -->
+
 </mat-card>
 
 <div class="mat-elevation-z8 demo-table" style="margin-top: 10px;">
@@ -28,7 +30,7 @@
         <td>{{ item.patientRegNo }}</td>
         <td>{{ item.patientName }}</td>
         <td>{{ item.age }}</td>
-        <td>{{ item.address }}</td>
+        <td>{{ item.adress }}</td>
         <td>{{ item.gender }}</td>
         <td>{{ item.bloodGroup }}</td>
         <td>{{ item.phNo }}</td>

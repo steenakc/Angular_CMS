@@ -1,7 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddstockService } from 'src/app/service/addstock.service';
+import { AddtestService } from 'src/app/service/addtest.service';
+
 
 
 @Component({
@@ -10,48 +11,29 @@ import { AddstockService } from 'src/app/service/addstock.service';
   styleUrls: ['./lab-bill.component.scss']
 })
 export class LabBillComponent implements OnInit {
-
-  appointmentId:number;
-  medicineprescriptionlist:any
-  medicineprescriptionlist1:any
-
-  constructor(private listmedicineprescription:AddstockService,private router: Router,private activatedrouter:ActivatedRoute) { }
-
+appointmentId:number;
+listprescribe1:any;
+listprescribe2:any
+  constructor(private testprescribelist:AddtestService,private router:Router,private activatedroute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedrouter.paramMap.subscribe(params=>{
+
+    this.activatedroute.paramMap.subscribe(params=>{
       this.appointmentId=Number(params.get('appointmentId'));
       console.log(this.appointmentId);
     })
-    this.listmedicineprescription.prescriptionById(this.appointmentId).subscribe(
+    this.testprescribelist.prescriptionById(this.appointmentId).subscribe(
       (result: any[]) => {
         console.warn(result);
-        this.medicineprescriptionlist = result;
-        this.medicineprescriptionlist1= result[0];
+        this.listprescribe1 = result;
+        this.listprescribe2= result[0];
       },
       (error: any) => {
         console.log(error);
       }
     );
-    console.log("medicineprescriptionlist")
+    console.log("testprescribelist")
   }
-  
-  
-  getTotalPrice(): number {
-    let totalPrice = 0;
-    for (let item of this.medicineprescriptionlist) {
-      totalPrice += item.count * item.medicne.rate;
-    }
-    return totalPrice;
-  }
-  
-
-  cancel(){
-    this.router.navigate(['dashboard/pharmacist/list-medicineprescription']);
-
-  }
-
-
 
   getCurrentDate() {
     const today = new Date();
@@ -61,22 +43,15 @@ export class LabBillComponent implements OnInit {
     return `${day}/${month}/${year}`;
   }
 
-  disableprescription(medicnePrescriptionId:number){
-    console.warn("medicnePrescriptionId",medicnePrescriptionId)
-    this.listmedicineprescription.deletePrescription(medicnePrescriptionId).subscribe((result)=>{
-      
-      if(result){
-        
-      }
-      alert("Medicine is deleted successfully");
-   
-    })
-    setTimeout(()=>{
-      
-    },3000);
+  getTotalPrice(): number {
+    let totalPrice = 0;
+    for (let item of this.listprescribe1) {
+      totalPrice += item.labTest.testPrice;
+    }
+    return totalPrice;
   }
-
-  
-  
-
 }
+
+
+
+

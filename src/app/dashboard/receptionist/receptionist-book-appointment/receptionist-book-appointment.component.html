@@ -79,7 +79,7 @@
 <mat-card style="margin-top: 25px;">
   <mat-card-header>
     <mat-card-title>Appiontment Details</mat-card-title>
-    <mat-card-subtitle>End</mat-card-subtitle>
+    <mat-card-subtitle></mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <mat-form-field class="example-full-width">
@@ -108,8 +108,8 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <div *ngIf="doctor!=null&&doctor.doctor!=null&&doctor.doctor.doctorId>0">
-      <mat-form-field style="padding: 25px;">
+    
+      <mat-form-field *ngIf="doctor!=null&&doctor.doctor!=null&&doctor.doctor.doctorId>0" style="padding: 25px;">
         <mat-label> Available slots</mat-label>
         <mat-select name="Time" [(ngModel)]="timeSelected" (selectionChange)="onSlotChange()">
           <mat-option [disabled]="slot.appointment_id>0" *ngFor="let slot of doctor.doctorSlotAppointments" [value]="slot.time">
@@ -117,7 +117,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
+   
 
   </mat-card-content>
 

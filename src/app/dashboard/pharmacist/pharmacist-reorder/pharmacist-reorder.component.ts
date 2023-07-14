@@ -14,6 +14,7 @@ export class PharmacistReorderComponent implements OnInit {
     noOfBoxes: '',
     unitPerBox: '',
     expiryDate: '',
+    count: '',
     medicineStockId: '',
     medicine: {
       medicineId: '',
@@ -52,8 +53,8 @@ export class PharmacistReorderComponent implements OnInit {
     if (
       !this.patientForm.medicineId ||
       !this.patientForm.medicineCompanyId ||
-      !this.patientForm.noOfBoxes ||+this.patientForm.noOfBoxes<1||
-      !this.patientForm.unitPerBox||+this.patientForm.unitPerBox<1
+      !this.patientForm.count ||+this.patientForm.count<1
+      // !this.patientForm.unitPerBox||+this.patientForm.unitPerBox<1
     ) {
       alert("Please fill in all the fields.");
       return;
@@ -61,5 +62,11 @@ export class PharmacistReorderComponent implements OnInit {
     
     // Logic for submitting the form and reordering stock
     alert('Reordered Stock Successfully');
+    this.router.navigate(['dashboard/pharmacist/stock']);
+
+  }
+
+  cancel(){
+    this.router.navigate(['dashboard/pharmacist/stock']);
   }
 }

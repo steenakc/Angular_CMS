@@ -1,6 +1,6 @@
 import { DatePipe, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddstockService } from 'src/app/service/addstock.service';
 
 @Component({
@@ -34,7 +34,7 @@ export class PharmacistEditstockComponent implements OnInit {
   medicineStockId:number;
 
 
-  constructor(private route:ActivatedRoute,public addstockService:AddstockService) { 
+  constructor(private route:ActivatedRoute,public addstockService:AddstockService,private router:Router) { 
     this.today = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
   }
 
@@ -87,13 +87,14 @@ export class PharmacistEditstockComponent implements OnInit {
     console.log(this.patientForm);
     this.addstockService.insertStock(this.patientForm).then((response)=>{
       console.log(response);
-      alert("data added successfully");
-      
+      alert("Stock updated successfully");
+      this.router.navigate(['dashboard/pharmacist/list-stock']);
     });
     
   }
   cancel(){
-    
+    this.router.navigate(['dashboard/pharmacist/list-stock']);
+
   }
 
 }

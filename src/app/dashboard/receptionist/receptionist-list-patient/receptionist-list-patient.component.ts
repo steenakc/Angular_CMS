@@ -9,22 +9,49 @@ import { ReceptionistService } from 'src/app/service/receptionist.service';
 })
 export class ReceptionistListPatientComponent implements OnInit {
   patientId: number = 0;
+  doctorId: number = 0;
+  departmentId: number = 0;
+  date: any = null;
+  time: any = null;
   searchTerm: any = '';
   input: any;
 
-  patientList: ReceptionistService[];
+  patientList: ReceptionistService[]=[];
 
-  constructor(private route: ActivatedRoute, private listpatient: ReceptionistService, private receptionistService: ReceptionistService, private router: Router) {
+  constructor(private route: ActivatedRoute, private receptionistService: ReceptionistService,
+    private router: Router) {
     this.route.queryParams.forEach(params => {
       if (params["patientId"] != undefined && +params["patientId"] != this.patientId) {
         this.patientId = +params["patientId"];
       }
+      if (params["doctorId"] != undefined && +params["doctorId"] != this.doctorId) {
+        this.doctorId = +params["doctorId"];
+      }
+      if (params["departmentId"] != undefined && +params["departmentId"] != this.departmentId) {
+        this.departmentId = +params["departmentId"];
+      }
+      if (params["date"] != undefined && params["date"] != null) {
+        this.date = params["date"];
+      }
+      if (params["time"] != undefined && params["time"] != null) {
+        this.time = params["time"];
+      }
     });
-    if (this.patientId > 0) {
-      this.loadPatientFromPatientId();
-    } else {
 
-    }
+  }
+
+  addPatient() {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "doctorId": this.doctorId,
+        "date": this.date,
+        "time": this.time,
+        "departmentId": this.departmentId,
+        "index": Math.round(Math.random() * 10000),
+      },
+      skipLocationChange: false
+    };
+    this.router.navigate(['/dashboard/receptionist/new-patient'], navigationExtras);
   }
 
   ngOnInit(): void {
@@ -32,14 +59,22 @@ export class ReceptionistListPatientComponent implements OnInit {
 
   }
   listPatient() {
-    this.listpatient.patientList().then((result) => {
+    this.receptionistService.patientList().then((result) => {
       console.warn(result)
-      this.patientList = result;
+      if (this.patientId <= 0) {
+        this.patientList = result;
+      } else {
+        result.forEach(element => {
+          if (element.patientId === this.patientId) {
+            this.patientList.push(element);
+          }
+        });
+      }
     })
   }
 
   loadPatientFromPatientId() {
-    alert(this.patientId);
+
   }
 
   disablePatient(patientId: any) {
@@ -67,6 +102,10 @@ export class ReceptionistListPatientComponent implements OnInit {
   bookAppointment(patientId: number): void {
     let navigationExtras: NavigationExtras = {
       queryParams: {
+        "doctorId": this.doctorId,
+        "date": this.date,
+        "time": this.time,
+        "departmentId": this.departmentId,
         "patientId": patientId,
         "index": Math.round(Math.random() * 10000),
       },

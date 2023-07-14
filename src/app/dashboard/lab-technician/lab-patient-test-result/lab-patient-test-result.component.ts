@@ -27,6 +27,10 @@ export class LabPatientTestResultComponent implements OnInit {
     this.router.navigate(['/dashboard/lab-technician/editresult'])
   }
 
+  navigateToBill(){
+    this.router.navigate(['/dashboard/lab-technician/lab-bill'])
+  }
+
 }
 
 

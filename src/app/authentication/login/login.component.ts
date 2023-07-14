@@ -76,13 +76,13 @@ help=new Helper();
             this.router.navigate(['dashboard/receptionist']);
             break;
           case 2:
-            this.router.navigate(['dashboard/doctor']);
-            break;
-          case 3:
             this.router.navigate(['dashboard/pharmacist']);
             break;
+          case 3:
+            this.router.navigate(['dashboard/lab-technician']);
+            break;
           case 4:
-            this.router.navigate(['/dashboard/lab-technician']);
+            this.router.navigate(['dashboard/doctor']);
             break;
           default:
             alert('You are not a valid user')

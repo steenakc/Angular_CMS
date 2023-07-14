@@ -1,1 +1,56 @@
-<p>recep-bill works!</p>
+<mat-card *ngIf="billDetails!=null" style="height: 100%; background-color: #f0b19f; bottom: 1px;">
+    <mat-card-header>
+        <mat-card-title>
+            {{billDetails.message}}
+        </mat-card-title>
+        <mat-card-title>
+        </mat-card-title>
+
+        <mat-card-subtitle>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content id="printContainer" *ngIf="billDetails.hasData&&billDetails.data!=null&&billDetails.data.bill_number">
+        <mat-card style="margin-left: 1%; margin-right: 25%;  size: 250px;">
+            <mat-card-content style="font-weight: bold; margin-top: 20px;margin-bottom: 20px;">
+                <div style="width: 100%; text-align: center; font-size:25px; text-transform: capitalize;">
+                    Bill Details
+                </div>
+            </mat-card-content>
+            <mat-card-content style="font-size: large;">
+
+                <table id="customers">
+                    <tr>
+                        <td>Bill Number </td>
+                        <td> {{billDetails.data.bill_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Registraction Fee </td>
+                        <td> {{billDetails.data.registractionBillAmount}}</td>
+                    </tr>
+                    <tr>
+                        <td>Registraction Fee </td>
+                        <td> ₹{{billDetails.data.registractionBillAmount}}</td>
+                    </tr>
+                    <tr>
+                        <td> Consultation Fee </td>
+                        <td> ₹{{billDetails.data.appointmentBillAmount}}</td>
+                    </tr>
+                    <tr>
+                        <td> Total Fee </td>
+                        <td>  ₹{{billDetails.data.totalAmount}}</td>
+                    </tr>
+                </table>
+
+            </mat-card-content>
+        </mat-card>
+
+
+
+        <mat-card-actions  align="end">
+            <!-- <button mat-raised-button color="warn" (click)="goToDashBoard()"> Go To DashBoard</button> -->
+            <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="print()"> Print</button>
+            <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="markBillAsPaid()"> Mark Bill
+                Paid</button>
+
+
+        </mat-card-actions>

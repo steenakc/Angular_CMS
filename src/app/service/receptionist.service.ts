@@ -22,6 +22,10 @@ export class ReceptionistService extends ApiService {
     // request body
     return this.doPost(environment.apiUrl + "/receptionist/add-patient", addPatient);
   }
+  cancelAppointment(appointmentId: any): Promise<any> {
+    return this.doDelete(environment.apiUrl + `/receptionist/cancel-appointment?appointmentId=${appointmentId}`, null);
+  }
+  
 
   addAppointment(addAppointment:any):Promise<any>{
     return this.doPost(environment.apiUrl+"/receptionist/appointment",addAppointment);
@@ -59,6 +63,13 @@ export class ReceptionistService extends ApiService {
   searchPatientByNameOrPhoneNumber(searchTerm:any){
     return this.doGet(environment.apiUrl+`/receptionist/search-patient?searchTerm=${searchTerm}`)
   }
+  getBillDetails(appointmentId:any){
+    return this.doGet(environment.apiUrl+`/receptionist/generate-bill?appointmentId=${appointmentId}`)
+  }
+  markBillAsPaid(patientBillId:any){
+    return this.doGet(environment.apiUrl+`/receptionist/mark-bill-paid?patientBillId=${patientBillId}`)
+  }
+  
 
 
   // deleteStock(medicineId: number): Observable<any> {

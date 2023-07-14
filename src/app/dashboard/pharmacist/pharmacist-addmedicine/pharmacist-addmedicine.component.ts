@@ -57,13 +57,19 @@ export class PharmacistAddmedicineComponent implements OnInit {
     console.log(this.medicineForm);
     this.addstockService.insertMedicine(this.medicineForm).then((response)=>{
       console.log(response);
-      alert("data added successfully");
+      alert("Medicine added successfully");
+      this.router.navigate(['dashboard/pharmacist/list-medicine']);
     });
 
   }
   cancel(){
     this.router.navigate(['dashboard/pharmacist/add-stock']);
     
+  }
+
+  addComp(){
+    this.router.navigate(['dashboard/pharmacist/add-company']);
+
   }
 
 }

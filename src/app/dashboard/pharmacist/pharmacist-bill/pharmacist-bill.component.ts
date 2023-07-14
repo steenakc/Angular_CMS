@@ -45,7 +45,7 @@ export class PharmacistBillComponent implements OnInit {
   
 
   cancel(){
-    this.router.navigate(['dashboard/pharmacist/list-medicineprescription']);
+    this.router.navigate(['dashboard/pharmacist/list-prescription']);
 
   }
 
@@ -62,7 +62,9 @@ export class PharmacistBillComponent implements OnInit {
   disableprescription(medicnePrescriptionId:number){
     console.warn("medicnePrescriptionId",medicnePrescriptionId)
     this.listmedicineprescription.deletePrescription(medicnePrescriptionId).subscribe((result)=>{
-      
+      console.warn(result);
+        this.medicineprescriptionlist = result;
+        this.medicineprescriptionlist1= result[0];
       if(result){
         
       }
@@ -74,7 +76,18 @@ export class PharmacistBillComponent implements OnInit {
     },3000);
   }
 
-  
+  disablePharma(appointmentId:number){
+    console.warn(appointmentId)
+    this.listmedicineprescription.deletePharma(appointmentId).subscribe((result: any[])=>{
+      if(result){
+      }
+      print()
+      this.router.navigate(['dashboard/pharmacist/list-prescription']);
+
+    });
+    
+  }
+
   
 
 }

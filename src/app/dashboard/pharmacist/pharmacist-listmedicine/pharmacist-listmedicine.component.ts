@@ -38,6 +38,11 @@ export class PharmacistListmedicineComponent implements OnInit {
     );
   }
 
+  medicinesLists(){
+    this.router.navigate(['dashboard/pharmacist/list-stock']);
+
+  }
+
   applyFilter(): void {
     if (!this.searchTerm) {
       this.filteredList = this.medicinelist;
@@ -45,8 +50,8 @@ export class PharmacistListmedicineComponent implements OnInit {
     }
 
     this.filteredList = this.medicinelist.filter((item: any) =>
-      item.medicine.medicineName.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+    item.medicineName.toLowerCase().includes(this.searchTerm.toLowerCase()) 
+  );
   }
 
 
@@ -59,6 +64,7 @@ export class PharmacistListmedicineComponent implements OnInit {
         
       }
       alert("Medicine is deleted successfully");
+      this.listMedicine();
     })
     setTimeout(()=>{
       

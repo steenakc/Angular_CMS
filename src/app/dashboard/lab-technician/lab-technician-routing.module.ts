@@ -10,6 +10,7 @@ import { LabPatientTestComponent } from './lab-patient-test/lab-patient-test.com
 import { LabPatientTestResultComponent } from './lab-patient-test-result/lab-patient-test-result.component';
 import { AddresultComponent } from './addresult/addresult.component';
 import { EditresultComponent } from './editresult/editresult.component';
+import { LabBillComponent } from './lab-bill/lab-bill.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,10 @@ const routes: Routes = [
       {
         path: 'lab-patient-test-result',
         component: LabPatientTestResultComponent,
+      },
+      {
+        path: 'lab-bill',
+        component: LabBillComponent,
       }
     ]
 }

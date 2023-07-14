@@ -50,7 +50,32 @@ export class RespAppointmentViewComponent implements OnInit {
   cancel(){
 
   }
-
+  cancelAppointment(){
+    if (confirm("Are You sure to cancel appointment") == true) {
+    this.receptionistService.cancelAppointment(this.AppointmentId).then((response)=>{
+      alert(response.message);
+      this.router.navigate(['/dashboard/receptionist/list-patient'])
+    });
+  }
+  }
+  getDateFromAppointmentDate(datetime:any)
+  {
+    try {
+      return datetime.substring(0,10);
+    } catch (error) {
+      
+    }
+    return "";
+  }
+  getTimeFromAppointmentDate(datetime:any)
+  {
+    try {
+      return datetime.substring(11,23);
+    } catch (error) {
+      
+    }
+    return "";
+  }
   }
   
 
