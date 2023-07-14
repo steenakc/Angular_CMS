@@ -160,7 +160,7 @@ export class DoctorPrescriptionComponent implements OnInit {
     this.doctorListService.deleteMedicinePrescription(medicnePrescriptionId).subscribe((result) => {
       if (result) {
       }
-      alert("deleted");
+      
       this.getMedicinePrescriptionAppoinmtment()
     });
   }
@@ -243,7 +243,7 @@ export class DoctorPrescriptionComponent implements OnInit {
     this.doctorListService.deleteTestPrescription(testPrescriptionId).subscribe((result) => {
       if (result) {
       }
-      alert("deleted");
+      
       this.getTestPrescriptionAppoinmtment()
     });
   }
@@ -253,7 +253,7 @@ export class DoctorPrescriptionComponent implements OnInit {
     this.doctorListService.nextPatient(this.appointmentId).subscribe((result) => {
       if (result) {
       }
-      alert("bn");
+      
       this.router.navigate(['dashboard/doctor/view-appointment'])
     });
   }

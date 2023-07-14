@@ -1,49 +1,47 @@
+ <mat-form-field appearance="fill">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput placeholder="Search" [(ngModel)]="searchTerm" (ngModelChange)="applyFilter()">
+      </mat-form-field>
+
+
 <mat-card>
   <form class="example-form">
     <mat-grid-list class="mat-grid-tiles-align-start" cols="2" rowHeight="50px">
 
-
-
       <br><br><br><br>
 
       <mat-grid-tile colspan="2">
-        <div style="width: 100%;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;">
+        <div style="width: 100%; text-align: center; font-size: 24px; font-weight: bold;">
           <br>
-          Todays Appoinment
+          Today's Appointment
         </div>
       </mat-grid-tile>
 
+     
 
       <div class="mat-elevation-z8 demo-table">
-
         <table>
           <thead>
             <tr style="text-align: center;">
-              <ng-container matColumnDef="position">
-                <th>Patient Name</th> &nbsp;
-                <th>Gender</th>&nbsp;
-                <th>Age</th>&nbsp;
-                <th>Tocken No</th>&nbsp;
-                <th>Action</th>
-              </ng-container>
+              <th>Patient Name</th>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>Token No</th>
+              <th>Action</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr *ngFor="let item of appointmentList" style="text-align: center;">
-              <ng-container matColumnDef="position">
-                <td>{{item.patient.patientName}}</td>&nbsp;
-                <td>{{item.patient.gender}}</td>&nbsp;
-                <td>{{item.patient.age}}</td>&nbsp;
-                <td>{{item.opToken}}</td>&nbsp;
-                <td><button mat-button color="primary" (click)="goToDiagnosisPage(item)">
-                    Diagnosis
-                  </button></td>
-              </ng-container>
-
+            <tr *ngFor="let item of filteredList" style="text-align: center;">
+              <td>{{item.patient.patientName}}</td>
+              <td>{{item.patient.gender}}</td>
+              <td>{{item.patient.age}}</td>
+              <td>{{item.opToken}}</td>
+              <td>
+                <button mat-button color="primary" (click)="goToDiagnosisPage(item)">
+                  Diagnosis
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -52,9 +50,3 @@
     </mat-grid-list>
   </form>
 </mat-card>
-
-
-<!-- <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-  </mat-form-field> -->
