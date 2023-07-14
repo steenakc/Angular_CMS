@@ -56,16 +56,16 @@
                   </button>
                   <mat-menu #menu="matMenu">
                     <button mat-menu-item (click)="navigateToEditResult()" >
-                        <mat-icon>create</mat-icon>
-                      <span > Edit Result </span>
+                        <mat-icon>receipt</mat-icon>
+                      <span > Print Report </span>
                     </button>
-                    <button mat-menu-item  (click)="deleteTest(item.labTestId)">
-                        <mat-icon>delete_outline</mat-icon>
+                    <!-- <button mat-menu-item  (click)="deleteTest(item.labTestId)">
+                        <mat-icon>receipt</mat-icon>
                       <span> Print Report </span>
-                    </button>
+                    </button> -->
 
-                    <button mat-menu-item  (click)="deleteTest(item.labTestId)">
-                        <mat-icon>delete_outline</mat-icon>
+                    <button mat-menu-item  (click)="navigateToBill(item.labTestId)">
+                        <mat-icon>receipt</mat-icon>
                       <span> Print Bill </span>
                     </button>
 

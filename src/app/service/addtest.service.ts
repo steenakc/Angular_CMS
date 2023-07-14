@@ -62,6 +62,19 @@ export class AddtestService extends ApiService{
         return this.http.delete(url);
       }
 
+      prescriptionById(appointmentId:number){
+        console.log(appointmentId)
+        return this.http.get<any>(environment.apiUrl+`/api/prescribes/${appointmentId}`);
+  
+       }
+
+       deletePrescription(medicnePrescriptionId:number): Observable<any>{
+        const url = `${environment.apiUrl}/api/prescribe/${medicnePrescriptionId}`;
+        return this.http.delete(url);
+      }
+  
+  
+
 
 
   
