@@ -51,7 +51,7 @@ export class AddstockService extends ApiService{
      }
 
      prescriptionlist(){
-      return this.http.get<any>(environment.apiUrl+"/api/prescribe");
+      return this.http.get<any>(environment.apiUrl+"/api/pharmacy");
 
      }
 
@@ -80,6 +80,11 @@ export class AddstockService extends ApiService{
     deletePrescription(medicnePrescriptionId:number): Observable<any>{
       const url = `${environment.apiUrl}/api/prescribe/${medicnePrescriptionId}`;
       return this.http.delete(url);
+    }
+
+    deletePharma(appointmentId:number): Observable<any>{
+      // const url = `${environment.apiUrl}/api/pharma/${appointmentId}`;
+      return this.http.delete<any>(environment.apiUrl+"/api/pharma/"+appointmentId);
     }
 
     getMedicineNames(): Observable<string[]> {

@@ -7,14 +7,14 @@
           text-align: center;
           font-size: 24px;
           font-weight: bold;">
-       Update Stock 
+       Update Stock Form
           </div>
         </mat-grid-tile>
   
         <mat-grid-tile colspan="1">
           <mat-form-field>
             <mat-label>Medicine</mat-label>
-            <mat-select name="medicineId" [(ngModel)]="patientForm.medicineId">
+            <mat-select name="medicineId" [(ngModel)]="patientForm.medicineId" disabled>
               <mat-option *ngFor="let medicine of med" [value]="medicine.medicineId">{{ medicine.medicineName }}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -65,4 +65,3 @@
   
   <br>
   
-  <a href="/dashboard/pharmacist/list-stock">list-stock</a>

@@ -10,74 +10,60 @@ import { AddstockService } from 'src/app/service/addstock.service';
 export class PharmacistListcompanyComponent implements OnInit {
 
   searchTerm: string;
-  companylists: any[];
+  companylist: any[];
   filteredList: any[];
 
-  companylist:AddstockService[]
-
-  constructor(private listcompany:AddstockService,private router:Router) { }
+  constructor(private listcompany: AddstockService, private router: Router) { }
 
   ngOnInit(): void {
-    this.listcompany.companyList().subscribe(
-      (result: any[]) => {
-        console.warn(result);
-        this.companylist = result;
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-
-
-    this.listcompany.companyList().subscribe(
-      (result: any[]) => {
-        console.warn(result);
-        this.companylists = result;
-        this.filteredList = result;
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-
-    }
-    
-   
-    applyFilter(): void {
-      if (!this.searchTerm) {
-        this.filteredList = this.companylist;
-        return;
-      }
-    
-      this.filteredList = this.companylist.filter((item: any) =>
-        item.companyName.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-
-    }
-  
-
-  insertCompany(){
-    this.router.navigate(['dashboard/pharmacist/add-company']);
-  
+    this.medicinecompanyList();
   }
 
-  deleteCompany(medicneCompanyId:number){
-    console.warn("medicneCompanyId",medicneCompanyId)
-    this.listcompany.deleteCompany(medicneCompanyId).subscribe((result)=>{
-      
-      if(result){
-        
+medicinecompanyList(){
+  this.listcompany.companyList().subscribe(
+    (result: any[]) => {
+      console.log(result);
+      this.companylist = result;
+      this.filteredList = result;
+    },
+    (error: any) => {
+      console.log(error);
+    }
+  );
+}
+
+  applyFilter(): void {
+    if (!this.searchTerm) {
+      this.filteredList = this.companylist;
+      return;
+    }
+  
+    this.filteredList = this.companylist.filter((item: any) =>
+      item.companyName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      item.companyAddress.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+
+  insertCompany(): void {
+    this.router.navigate(['dashboard/pharmacist/add-company']);
+  }
+
+  deleteCompany(medicneCompanyId: number): void {
+    console.log("medicneCompanyId", medicneCompanyId);
+    this.listcompany.deleteCompany(medicneCompanyId).subscribe((result) => {
+      if (result) {
+        // Perform any necessary action on successful deletion
       }
       alert("Company is deleted successfully");
-    })
-    setTimeout(()=>{
-      
-    },3000);
+      this.medicinecompanyList();
+    });    
+  }
+    
+  medicinesLists(){
+    this.router.navigate(['dashboard/pharmacist/list-medicine']);
   }
 
-  editCompany(medicneCompanyId:number){
-    this.router.navigate(['dashboard/pharmacist/edit-company',medicneCompanyId]);
-
+  editCompany(medicneCompanyId: number): void {
+    this.router.navigate(['dashboard/pharmacist/edit-company', medicneCompanyId]);
   }
-
 }

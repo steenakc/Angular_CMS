@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddstockService } from 'src/app/service/addstock.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class PharmacistEditmedicineComponent implements OnInit {
 
   medicineId:number;
 
-  constructor(private route:ActivatedRoute,public addstockService:AddstockService) { }
+  constructor(private route:ActivatedRoute,public addstockService:AddstockService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -72,11 +72,13 @@ export class PharmacistEditmedicineComponent implements OnInit {
     console.log(this.medicineForm);
     this.addstockService.insertMedicine(this.medicineForm).then((response)=>{
       console.log(response);
-      alert("data added successfully");
+      alert("Medicine details updated successfully");
+      this.router.navigate(['dashboard/pharmacist/list-medicine'])
     });
 
 }
 cancel(){
-
+  this.router.navigate(['dashboard/pharmacist/list-medicine'])
 }
+
 }

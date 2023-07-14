@@ -23,27 +23,32 @@ export class PharmacistAddcompanyComponent implements OnInit {
   }
 
   submitCompany(){
-      if (!this.companyForm.companyName) {
-        alert("Enter the medicine name");
-        return;
-      }
-      if (!this.companyForm.companyAddress) {
-        alert("Enter a valid address");
-        return;
-      }
-      if (!this.companyForm.contactNo) {
-        alert("Select the company");
-        return;
-      }
+    if (!this.companyForm.companyName) {
+      alert("Company name should not be empty");
+      return;
+    }
+    if (!this.companyForm.companyAddress) {
+      alert("Company address should not be empty");
+      return;
+    }
+    if (!this.companyForm.contactNo) {
+      alert("Emergency contact number should not be empty");
+      return;
+    }
+    if (this.companyForm.contactNo.length !== 10) {
+      alert("Emergency contact number should be 10 digits");
+      return;
+    }
   /*
   * add other validations here
   */
       console.log(this.companyForm);
       this.addcompanyService.insertCompany(this.companyForm).then((response)=>{
         console.log(response);
-        alert("data added successfully");
+        alert("Company added successfully");
+        this.router.navigate(['dashboard/pharmacist/list-company']);
+
       });
-  
     }
 
   cancel(){

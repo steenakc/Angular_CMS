@@ -73,5 +73,7 @@ export class PharmacistListstockComponent implements OnInit {
     this.router.navigate(['dashboard/pharmacist/edit-stock', medicineStockId]);
   }
   
-  
+  stocksLists(){
+    this.router.navigate(['dashboard/pharmacist/stock']);
+  }
 }

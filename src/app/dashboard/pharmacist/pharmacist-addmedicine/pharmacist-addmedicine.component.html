@@ -6,7 +6,7 @@
           <div style="width: 100%;
           text-align: center;
           font-size: 24px;
-          font-weight: bold;">
+          font-weight: bold;padding-right: 9%;">
             Add Medicine
           </div>
         </mat-grid-tile>
@@ -32,7 +32,8 @@
               <mat-option *ngFor="let comp of company" [value]="comp.medicneCompanyId">{{ comp.companyName }}</mat-option>
             </mat-select>
           </mat-form-field>
-          <a href="/dashboard/pharmacist/add-company">AddCompany</a>
+          <mat-list-item (click)="addComp()" style="cursor: pointer; padding-left:7%;padding-top:4%;">Add Company</mat-list-item>
+          <!-- <a href="/dashboard/pharmacist/add-company">AddCompany</a> -->
         </mat-grid-tile>
   
         <mat-grid-tile colspan="2" rowspan="2">
@@ -49,6 +50,4 @@
   </mat-card>
   
   <br>
-  
-  <a routerLink="/dashboard/pharmacist/list-medicine">List Medicines</a>
   
